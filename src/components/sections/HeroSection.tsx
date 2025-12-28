@@ -24,18 +24,18 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-12 w-full px-4">
            <a
               href="#" // Replace with actual download link if available
-              className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-lg font-bold hover:bg-zinc-200 transition-all flex items-center justify-center gap-3"
+              className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest hover:bg-zinc-200 transition-all flex items-center justify-center gap-3 text-sm"
             >
-              <Download className="w-5 h-5" />
+              <Download className="w-4 h-4" />
               Download v1.0
             </a>
             <a
               href="https://github.com/abhijith-p-subash/ortu"
               target="_blank"
               rel="noopener noreferrer" 
-              className="w-full sm:w-auto px-8 py-4 bg-secondary border border-border text-white rounded-lg font-bold hover:bg-zinc-800 transition-all flex items-center justify-center gap-3"
+              className="w-full sm:w-auto px-8 py-4 bg-secondary border border-border text-white rounded-full font-bold uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center justify-center gap-3 text-sm"
             >
-              <Github className="w-5 h-5" />
+              <Github className="w-4 h-4" />
               Source Code
             </a>
         </div>

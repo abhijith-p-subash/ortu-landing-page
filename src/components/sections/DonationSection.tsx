@@ -28,7 +28,7 @@ const DonationSection = () => (
           href="https://www.buymeacoffee.com" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="inline-flex items-center gap-4 px-12 py-6 bg-white hover:bg-accent hover:text-white text-black rounded-full font-black text-lg transition-all duration-300 shadow-xl shadow-black/20"
+          className="inline-flex items-center gap-3 px-8 py-4 bg-white hover:bg-accent hover:text-white text-black rounded-full font-bold text-sm uppercase tracking-widest transition-all duration-300 shadow-lg shadow-black/20"
         >
           <Coffee className="w-5 h-5" />
           Buy me a coffee
