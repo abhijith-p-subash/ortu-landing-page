@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #020202;
-  --color-secondary: #0a0a0a;
+  --color-primary: #1a1a1a;
+  --color-secondary: #1e1e1e;
   --color-accent: #ef4444;
   --color-accent-hover: #dc2626;
+  --color-border: #333333;
   --color-border-glass: rgba(255, 255, 255, 0.08);
 
   --font-sans: "Plus Jakarta Sans", "system-ui", "sans-serif";
@@ -20,16 +21,19 @@
     @apply bg-primary text-zinc-400 font-sans antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply text-white tracking-tight font-extrabold;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-border-glass;
+    @apply bg-secondary border border-border;
   }
-  
+
   .glow-text {
     text-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
   }
