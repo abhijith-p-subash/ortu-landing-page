@@ -2,8 +2,6 @@
 
 The official landing page for **Ortu** - a cross-platform, minimal, and keyboard-centric clipboard manager.
 
-![Ortu Preview](/w1.png)
-
 ## 🚀 About Ortu
 
 Ortu is a modern clipboard manager built with **Rust** and **Tauri**, designed for developers who value performance, privacy, and keyboard efficiency. It works natively on macOS, Windows, and Linux.
