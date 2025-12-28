@@ -25,7 +25,7 @@ const DonationSection = () => (
         <motion.a 
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
-          href="https://www.buymeacoffee.com" 
+          href="https://buymeacoffee.com/abhijithpsubash" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="inline-flex items-center gap-3 px-8 py-4 bg-white hover:bg-accent hover:text-white text-black rounded-full font-bold text-sm uppercase tracking-widest transition-all duration-300 shadow-lg shadow-black/20"
