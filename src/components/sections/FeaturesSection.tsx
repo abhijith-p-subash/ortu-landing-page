@@ -22,7 +22,7 @@ const FeaturesSection = () => {
           <h2 className="text-4xl font-bold tracking-tight mb-4">Why Ortu?</h2>
           <p className="text-zinc-500 max-w-xl">
             A complete rethink of how a clipboard manager should work. 
-            Native performance, developer-focused features, and zero fluff.
+            Native performance on Windows, macOS, and Linux. Developer-focused features and zero fluff.
           </p>
         </div>
 
@@ -70,8 +70,8 @@ const FeaturesSection = () => {
           {/* 3. Performance - Wide */}
           <motion.div variants={itemVariants} className="md:col-span-1 md:row-span-1 bg-secondary border border-border rounded-2xl p-6 flex items-center justify-between group hover:border-yellow-500/50 transition-colors">
             <div>
-               <h3 className="font-bold text-lg text-yellow-500">Rust</h3>
-               <p className="text-xs text-zinc-500">Native Core</p>
+               <h3 className="font-bold text-lg text-yellow-500">Cross-Platform</h3>
+               <p className="text-xs text-zinc-500">Works on everything.</p>
             </div>
             <Zap className="w-8 h-8 text-yellow-500 opacity-80" />
           </motion.div>

@@ -8,7 +8,7 @@ const Footer = () => (
          <span className="font-bold text-white">Ortu</span>
       </div>
       <p className="text-zinc-600 text-sm">
-        © 2025 Ortu Project. Built with Rust & Passion.
+        © 2025 Ortu Project. Cross-platform clipboard manager.
       </p>
       <div className="flex items-center gap-6">
         <a href="https://github.com/abhijithpsubash/ortu" className="text-zinc-500 hover:text-white transition-colors">

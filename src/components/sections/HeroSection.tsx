@@ -18,7 +18,9 @@ const HeroSection = () => {
         </div>
         <p className="mt-8 text-lg md:text-xl text-zinc-500 max-w-lg mx-auto font-medium px-4">
           Native. Private. Keyboard-centric. <br className="hidden md:block" />
-          <span className="text-zinc-400">The missing piece of your macOS workflow.</span>
+          <span className="text-zinc-400">The missing piece of your workflow.</span>
+          <br className="hidden md:block" />
+          <span className="text-sm text-zinc-600 mt-2 block uppdercase tracking-widest">macOS · Windows · Linux</span>
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-12 w-full px-4">
