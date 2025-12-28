@@ -1,7 +1,61 @@
 import { motion } from "framer-motion";
-import { Download, Github } from "lucide-react";
+import { Download, Github, Loader2 } from "lucide-react"; // Added Loader2
+import { useState, useEffect } from "react";
 
 const HeroSection = () => {
+  const [downloadUrl, setDownloadUrl] = useState<string>("https://github.com/abhijith-p-subash/ortu/releases/tag/v1.0.0");
+  const [buttonText, setButtonText] = useState<string>("Download v1.0");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const detectOS = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      if (userAgent.includes("mac")) return "mac";
+      if (userAgent.includes("win")) return "windows";
+      if (userAgent.includes("linux")) return "linux";
+      return "unknown";
+    };
+
+    const fetchRelease = async () => {
+      try {
+        const os = detectOS();
+        const response = await fetch("https://api.github.com/repos/abhijith-p-subash/ortu/releases/tags/v1.0.0");
+        const data = await response.json();
+        
+        if (!data.assets) throw new Error("No assets found");
+
+        let asset;
+        let osText = "v1.0";
+
+        if (os === "mac") {
+          asset = data.assets.find((a: any) => a.name.endsWith(".dmg"));
+          osText = "for macOS";
+        } else if (os === "windows") {
+          asset = data.assets.find((a: any) => a.name.endsWith(".msi")) || data.assets.find((a: any) => a.name.endsWith(".exe"));
+          osText = "for Windows";
+        } else if (os === "linux") {
+          asset = data.assets.find((a: any) => a.name.endsWith(".AppImage"));
+          osText = "for Linux";
+        }
+
+        if (asset) {
+          setDownloadUrl(asset.browser_download_url);
+          setButtonText(`Download ${osText}`);
+        } else {
+            // Fallback if specific asset not found but we know the OS
+            setButtonText(`Download ${osText}`);
+        }
+      } catch (error) {
+        console.error("Failed to fetch release:", error);
+        // Fallback to default styling
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRelease();
+  }, []);
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 overflow-hidden">
       <motion.div
@@ -20,16 +74,16 @@ const HeroSection = () => {
           Native. Private. Keyboard-centric. <br className="hidden md:block" />
           <span className="text-zinc-400">The missing piece of your workflow.</span>
           <br className="hidden md:block" />
-          <span className="text-sm text-zinc-600 mt-2 block uppdercase tracking-widest">macOS · Windows · Linux</span>
+          <span className="text-sm text-zinc-600 mt-2 block uppercase tracking-widest">macOS · Windows · Linux</span>
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-12 w-full px-4">
            <a
-              href="#" // Replace with actual download link if available
-              className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest hover:bg-zinc-200 transition-all flex items-center justify-center gap-3 text-sm"
+              href={downloadUrl}
+              className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest hover:bg-zinc-200 transition-all flex items-center justify-center gap-3 text-sm min-w-[200px]"
             >
-              <Download className="w-4 h-4" />
-              Download v1.0
+              {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+              {buttonText}
             </a>
             <a
               href="https://github.com/abhijith-p-subash/ortu"
