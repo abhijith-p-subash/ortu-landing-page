@@ -18,7 +18,7 @@ const FeaturesSection = () => {
   return (
     <section className="py-24 px-4 bg-primary text-white">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
+        <div className="mb-16" id="why">
           <h2 className="text-4xl font-bold tracking-tight mb-4">Why Ortu?</h2>
           <p className="text-zinc-500 max-w-xl">
             A complete rethink of how a clipboard manager should work. 
@@ -92,8 +92,8 @@ const FeaturesSection = () => {
                <p className="text-zinc-500 text-sm">Navigate without a mouse.</p>
              </div>
              <div className="flex gap-2 z-10">
-                <div className="px-2 py-1 bg-primary border border-border rounded text-xs font-mono text-zinc-400">⌘+V</div>
-                <div className="px-2 py-1 bg-primary border border-border rounded text-xs font-mono text-zinc-400">⌘+C</div>
+                <div className="px-2 py-1 bg-primary border border-border rounded text-xs font-mono text-zinc-400" title="macOS">⌥ + V</div>
+                <div className="px-2 py-1 bg-primary border border-border rounded text-xs font-mono text-zinc-400" title="Windows/Linux">Alt + V</div>
              </div>
               <div className="absolute -right-4 -top-4 text-purple-500/10 rotate-12">
                  <Command size={120} />
