@@ -5,7 +5,7 @@ const Navbar = () => (
   <nav className="fixed top-8 w-full z-50 px-4">
     <div className="max-w-4xl mx-auto glass rounded-full px-6 py-3 flex justify-between items-center shadow-2xl shadow-black/50">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center p-1.5 shadow-lg">
+        <div className="w-8 h-8 rounded-lg flex items-center justify-center ">
            <img className="w-full h-full object-contain" src="/app-icon.svg" alt="Ortu Logo" />
         </div>
         <span className="text-lg font-black text-white tracking-tighter">ORTU</span>
