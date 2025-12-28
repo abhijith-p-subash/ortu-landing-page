@@ -8,23 +8,23 @@ const HeroSection = () => {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="text-center z-10"
+        className="text-center z-10 w-full max-w-4xl mx-auto"
       >
-        <h1 className="text-[12rem] leading-none font-black tracking-tighter text-white select-none mix-blend-overlay opacity-50">
+        <h1 className="text-[20vw] md:text-[12rem] leading-none font-black tracking-tighter text-white select-none mix-blend-overlay opacity-50">
           ORTU
         </h1>
-        <div className="text-4xl md:text-6xl font-bold tracking-tight text-white -mt-12 md:-mt-20 mix-blend-normal">
+        <div className="text-3xl md:text-6xl font-bold tracking-tight text-white -mt-4 md:-mt-20 mix-blend-normal">
           The Clipboard <span className="text-accent">Manager</span>
         </div>
-        <p className="mt-8 text-xl text-zinc-500 max-w-lg mx-auto font-medium">
-          Native. Private. Keyboard-centric. <br />
+        <p className="mt-8 text-lg md:text-xl text-zinc-500 max-w-lg mx-auto font-medium px-4">
+          Native. Private. Keyboard-centric. <br className="hidden md:block" />
           <span className="text-zinc-400">The missing piece of your macOS workflow.</span>
         </p>
 
-        <div className="flex items-center justify-center gap-6 mt-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-12 w-full px-4">
            <a
               href="#" // Replace with actual download link if available
-              className="px-8 py-4 bg-white text-black rounded-lg font-bold hover:bg-zinc-200 transition-all flex items-center gap-3"
+              className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-lg font-bold hover:bg-zinc-200 transition-all flex items-center justify-center gap-3"
             >
               <Download className="w-5 h-5" />
               Download v1.0
@@ -33,7 +33,7 @@ const HeroSection = () => {
               href="https://github.com/abhijith-p-subash/ortu"
               target="_blank"
               rel="noopener noreferrer" 
-              className="px-8 py-4 bg-secondary border border-border text-white rounded-lg font-bold hover:bg-zinc-800 transition-all flex items-center gap-3"
+              className="w-full sm:w-auto px-8 py-4 bg-secondary border border-border text-white rounded-lg font-bold hover:bg-zinc-800 transition-all flex items-center justify-center gap-3"
             >
               <Github className="w-5 h-5" />
               Source Code

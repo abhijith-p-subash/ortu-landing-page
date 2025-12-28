@@ -31,7 +31,7 @@ const FeaturesSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[160px]"
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-auto md:auto-rows-[160px]"
         >
           {/* 1. Smart Groups - Large */}
           <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-2 bg-secondary border border-border rounded-2xl p-8 flex flex-col justify-between group hover:border-accent/40 transition-colors relative overflow-hidden">
