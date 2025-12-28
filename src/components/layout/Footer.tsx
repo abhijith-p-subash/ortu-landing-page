@@ -1,4 +1,4 @@
-import { Github, Clipboard } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 const Footer = () => (
   <footer className="py-12 px-4 border-t border-[#333]">
