@@ -1,73 +1,71 @@
-# React + TypeScript + Vite
+# Ortu Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The official landing page for **Ortu** - a cross-platform, minimal, and keyboard-centric clipboard manager.
 
-Currently, two official plugins are available:
+![Ortu Preview](/w1.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 About Ortu
 
-## React Compiler
+Ortu is a modern clipboard manager built with **Rust** and **Tauri**, designed for developers who value performance, privacy, and keyboard efficiency. It works natively on macOS, Windows, and Linux.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Cross-Platform**: Seamless experience on all major OSs.
+- **Zero Telemetry**: 100% local storage. Your clipboard data never leaves your device.
+- **Keyboard First**: Navigate, search, and paste without touching your mouse (`⌥+V` / `Alt+V`).
+- **Open Source**: Built in public, MIT licensed.
 
-## Expanding the ESLint configuration
+## ✨ Landing Page Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This repository contains the source code for the landing page (`https://ortu.in`), featuring:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Bento Grid Layout**: A modern, modular way to showcase features.
+- **Dynamic Download Button**: Automatically detects the user's OS and fetches the correct installer (`.dmg`, `.msi`, `.AppImage`) from GitHub Releases.
+- **Bold Typography**: "Type as Image" hero section with minimal aesthetics.
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop.
+- **Dark Mode**: A premium, developer-focused dark theme.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🏃‍♂️ Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1.  **Clone the repository:**
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    ```bash
+    git clone https://github.com/abhijith-p-subash/ortu-landing-page.git
+    cd ortu-landing-page
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for production:**
+    ```bash
+    npm run build
+    ```
+
+## 🤝 Contributing
+
+Contributions are welcome! If you find a bug or want to improve the site, feel free to open an issue or submit a pull request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+Built with ❤️ by [Abhijith P Subash](https://github.com/abhijith-p-subash).
+Support the project: [Buy Me a Coffee](https://buymeacoffee.com/abhijithpsubash)
