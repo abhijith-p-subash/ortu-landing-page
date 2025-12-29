@@ -1,60 +1,18 @@
 import { motion } from "framer-motion";
-import { Download, Github, Loader2 } from "lucide-react"; // Added Loader2
-import { useState, useEffect } from "react";
+import { Download, Github, Loader2 } from "lucide-react";
+import { useLatestRelease } from "../../hooks/useLatestRelease";
 
 const HeroSection = () => {
-  const [downloadUrl, setDownloadUrl] = useState<string>("https://github.com/abhijith-p-subash/ortu/releases/tag/v1.0.0");
-  const [buttonText, setButtonText] = useState<string>("Download v1.0");
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { downloadUrl, version, os, isLoading } = useLatestRelease();
+  const repoUrl = `https://github.com/${import.meta.env.VITE_GITHUB_REPO}`;
 
-  useEffect(() => {
-    const detectOS = () => {
-      const userAgent = window.navigator.userAgent.toLowerCase();
-      if (userAgent.includes("mac")) return "mac";
-      if (userAgent.includes("win")) return "windows";
-      if (userAgent.includes("linux")) return "linux";
-      return "unknown";
-    };
-
-    const fetchRelease = async () => {
-      try {
-        const os = detectOS();
-        const response = await fetch("https://api.github.com/repos/abhijith-p-subash/ortu/releases/tags/v1.0.0");
-        const data = await response.json();
-        
-        if (!data.assets) throw new Error("No assets found");
-
-        let asset;
-        let osText = "v1.0";
-
-        if (os === "mac") {
-          asset = data.assets.find((a: any) => a.name.endsWith(".dmg"));
-          osText = "for macOS";
-        } else if (os === "windows") {
-          asset = data.assets.find((a: any) => a.name.endsWith(".msi")) || data.assets.find((a: any) => a.name.endsWith(".exe"));
-          osText = "for Windows";
-        } else if (os === "linux") {
-          asset = data.assets.find((a: any) => a.name.endsWith(".AppImage"));
-          osText = "for Linux";
-        }
-
-        if (asset) {
-          setDownloadUrl(asset.browser_download_url);
-          setButtonText(`Download ${osText}`);
-        } else {
-            // Fallback if specific asset not found but we know the OS
-            setButtonText(`Download ${osText}`);
-        }
-      } catch (error) {
-        console.error("Failed to fetch release:", error);
-        // Fallback to default styling
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchRelease();
-  }, []);
+  const getButtonText = () => {
+    if (isLoading) return "Loading...";
+    if (os === "mac") return `Download for macOS (${version})`;
+    if (os === "windows") return `Download for Windows (${version})`;
+    if (os === "linux") return `Download for Linux (${version})`;
+    return `Download ${version}`;
+  };
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 overflow-hidden">
@@ -83,10 +41,10 @@ const HeroSection = () => {
               className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest hover:bg-zinc-200 transition-all flex items-center justify-center gap-3 text-sm min-w-[200px]"
             >
               {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-              {buttonText}
+              {getButtonText()}
             </a>
             <a
-              href="https://github.com/abhijith-p-subash/ortu"
+              href={repoUrl}
               target="_blank"
               rel="noopener noreferrer" 
               className="w-full sm:w-auto px-8 py-4 bg-secondary border border-border text-white rounded-full font-bold uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center justify-center gap-3 text-sm"
