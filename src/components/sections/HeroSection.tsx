@@ -54,6 +54,18 @@ const HeroSection = () => {
               Source Code
             </a>
         </div>
+
+        {os === 'windows' && (
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-6 text-sm text-zinc-500 max-w-md mx-auto"
+          >
+            <span className="text-amber-500 font-semibold">Windows User?</span> If SmartScreen flags the installer, 
+            click <span className="text-zinc-300">More info</span> → <span className="text-zinc-300">Run anyway</span>.
+          </motion.p>
+        )}
       </motion.div>
 
       {/* Abstract Minimal Visual */}
