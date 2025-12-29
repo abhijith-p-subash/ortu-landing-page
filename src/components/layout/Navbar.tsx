@@ -12,7 +12,7 @@ const Navbar = () => (
       </div>
       
       <div className="hidden md:flex items-center gap-8">
-        <a href="#features" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">Features</a>
+        {/* <a href="#features" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">Features</a> */}
         <a href="#why" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">Why?</a>
         <a 
           href="https://github.com/abhijith-p-subash/ortu" 
