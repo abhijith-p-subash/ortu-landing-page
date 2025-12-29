@@ -11,6 +11,7 @@ const HeroSection = () => {
     if (os === "mac") return `Download for macOS (${version})`;
     if (os === "windows") return `Download for Windows (${version})`;
     if (os === "linux") return `Download for Linux (${version})`;
+    if (os === "mobile") return "Available on Desktop";
     return `Download ${version}`;
   };
 

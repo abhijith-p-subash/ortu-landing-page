@@ -16,12 +16,16 @@ export const useLatestRelease = () => {
   // Use a sensible default while loading
   const [downloadUrl, setDownloadUrl] = useState<string>(`https://github.com/${REPO}/releases/latest`);
   const [version, setVersion] = useState<string>("Latest");
-  const [os, setOs] = useState<"mac" | "windows" | "linux" | "unknown">("unknown");
+  const [os, setOs] = useState<"mac" | "windows" | "linux" | "mobile" | "unknown">("unknown");
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const detectOS = () => {
       const userAgent = window.navigator.userAgent.toLowerCase();
+      // Check for mobile devices first
+      if (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+        return "mobile";
+      }
       if (userAgent.includes("mac")) return "mac";
       if (userAgent.includes("win")) return "windows";
       if (userAgent.includes("linux")) return "linux";
@@ -52,6 +56,7 @@ export const useLatestRelease = () => {
         } else if (detectedOs === "linux") {
           asset = data.assets.find((a) => a.name.endsWith(".AppImage"));
         }
+        // For mobile or unknown, we don't select a specific asset, existing default/fallback is fine.
 
         if (asset) {
           setDownloadUrl(asset.browser_download_url);
