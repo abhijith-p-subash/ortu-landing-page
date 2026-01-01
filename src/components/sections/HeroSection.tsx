@@ -9,10 +9,12 @@ const HeroSection = () => {
   const getButtonText = () => {
     if (isLoading) return "Loading...";
     if (os === "mac") return `Download for macOS (${version})`;
-    if (os === "windows") return `Download for Windows (${version})`;
-    if (os === "linux") return `Download for Linux (${version})`;
-    if (os === "mobile") return "Available on Desktop";
-    return `Download ${version}`;
+    
+    // For other platforms, we show they can download the Mac version, 
+    // but we can also just say "Download for macOS" to be explicit about what they are getting.
+    // Or if we want to be "cool", just "Download App" and the message explains the rest.
+    // User request: "alow users to download mac file evern if windows and linux"
+    return `Download for macOS (${version})`;
   };
 
   return (
@@ -33,10 +35,10 @@ const HeroSection = () => {
           Native. Private. Keyboard-centric. <br className="hidden md:block" />
           <span className="text-zinc-400">The missing piece of your workflow.</span>
           <br className="hidden md:block" />
-          <span className="text-sm text-zinc-600 mt-2 block uppercase tracking-widest">macOS · Windows · Linux</span>
+          <span className="text-sm text-zinc-600 mt-2 block uppercase tracking-widest">macOS · Windows & Linux (Coming Soon)</span>
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-12 w-full px-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-12 w-full px-4 mb-8">
            <a
               href={downloadUrl}
               className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest hover:bg-zinc-200 transition-all flex items-center justify-center gap-3 text-sm min-w-[200px]"
@@ -55,17 +57,21 @@ const HeroSection = () => {
             </a>
         </div>
 
-        {os === 'windows' && (
-          <motion.p 
+        {os !== 'mac' && (
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="mt-6 text-sm text-zinc-500 max-w-md mx-auto"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400 backdrop-blur-sm"
           >
-            <span className="text-amber-500 font-semibold">Windows User?</span> If SmartScreen flags the installer, 
-            click <span className="text-zinc-300">More info</span> → <span className="text-zinc-300">Run anyway</span>.
-          </motion.p>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+            </span>
+            Cooking up Windows & Linux versions. Let us cook!
+          </motion.div>
         )}
+
       </motion.div>
 
       {/* Abstract Minimal Visual */}

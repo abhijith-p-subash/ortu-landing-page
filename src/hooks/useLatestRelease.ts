@@ -56,7 +56,11 @@ export const useLatestRelease = () => {
         } else if (detectedOs === "linux") {
           asset = data.assets.find((a) => a.name.endsWith(".AppImage"));
         }
-        // For mobile or unknown, we don't select a specific asset, existing default/fallback is fine.
+        
+        // Fallback to Mac asset if specific OS asset is not found (since currently only Mac is fully supported/released)
+        if (!asset) {
+           asset = data.assets.find((a) => a.name.endsWith(".dmg"));
+        }
 
         if (asset) {
           setDownloadUrl(asset.browser_download_url);
