@@ -3,7 +3,7 @@ import { Download, Github, Loader2 } from "lucide-react";
 import { useLatestRelease } from "../../hooks/useLatestRelease";
 
 const HeroSection = () => {
-  const { downloadUrl, version, os, isLoading } = useLatestRelease();
+  const { downloadUrl, version, os, isLoading, totalDownloads } = useLatestRelease();
   const repoUrl = `https://github.com/${import.meta.env.VITE_GITHUB_REPO}`;
 
   const getButtonText = () => {
@@ -56,6 +56,23 @@ const HeroSection = () => {
               Source Code
             </a>
         </div>
+
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-col items-center gap-2 mb-8"
+        >
+             {!isLoading && (
+                <div className="flex items-center gap-2 text-zinc-400 text-sm">
+                    <span className="flex h-2 w-2 relative">
+                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                         <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span className="font-medium text-zinc-300">{totalDownloads}+ Downloads</span>
+                </div>
+            )}
+        </motion.div>
 
         {os !== 'mac' && (
           <motion.div

@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const REPO = import.meta.env.VITE_GITHUB_REPO;
 
 interface Asset {
   name: string;
   browser_download_url: string;
+  download_count: number;
 }
 
 interface ReleaseData {
@@ -14,16 +15,25 @@ interface ReleaseData {
 
 export const useLatestRelease = () => {
   // Use a sensible default while loading
-  const [downloadUrl, setDownloadUrl] = useState<string>(`https://github.com/${REPO}/releases/latest`);
+  const [downloadUrl, setDownloadUrl] = useState<string>(
+    `https://github.com/${REPO}/releases/latest`
+  );
   const [version, setVersion] = useState<string>("Latest");
-  const [os, setOs] = useState<"mac" | "windows" | "linux" | "mobile" | "unknown">("unknown");
+  const [os, setOs] = useState<
+    "mac" | "windows" | "linux" | "mobile" | "unknown"
+  >("unknown");
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [totalDownloads, setTotalDownloads] = useState<number>(0);
 
   useEffect(() => {
     const detectOS = () => {
       const userAgent = window.navigator.userAgent.toLowerCase();
       // Check for mobile devices first
-      if (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+      if (
+        /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+          userAgent
+        )
+      ) {
         return "mobile";
       }
       if (userAgent.includes("mac")) return "mac";
@@ -37,13 +47,23 @@ export const useLatestRelease = () => {
         const detectedOs = detectOS();
         setOs(detectedOs);
 
-        const response = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`);
+        const response = await fetch(
+          `https://api.github.com/repos/${REPO}/releases/latest`
+        );
         if (!response.ok) {
-           throw new Error(`GitHub API error: ${response.status}`);
+          throw new Error(`GitHub API error: ${response.status}`);
         }
-        
+
         const data: ReleaseData = await response.json();
         setVersion(data.tag_name);
+
+        if (data.assets) {
+          const downloads = data.assets.reduce(
+            (acc, asset) => acc + asset.download_count,
+            0
+          );
+          setTotalDownloads(downloads);
+        }
 
         if (!data.assets) throw new Error("No assets found");
 
@@ -52,21 +72,25 @@ export const useLatestRelease = () => {
         if (detectedOs === "mac") {
           asset = data.assets.find((a) => a.name.endsWith(".dmg"));
         } else if (detectedOs === "windows") {
-          asset = data.assets.find((a) => a.name.endsWith(".msi")) || data.assets.find((a) => a.name.endsWith(".exe"));
+          asset =
+            data.assets.find((a) => a.name.endsWith(".msi")) ||
+            data.assets.find((a) => a.name.endsWith(".exe"));
         } else if (detectedOs === "linux") {
           asset = data.assets.find((a) => a.name.endsWith(".AppImage"));
         }
-        
+
         // Fallback to Mac asset if specific OS asset is not found (since currently only Mac is fully supported/released)
         if (!asset) {
-           asset = data.assets.find((a) => a.name.endsWith(".dmg"));
+          asset = data.assets.find((a) => a.name.endsWith(".dmg"));
         }
 
         if (asset) {
           setDownloadUrl(asset.browser_download_url);
         } else {
-            // Fallback to the releases page if no specific asset is found
-            setDownloadUrl(`https://github.com/${REPO}/releases/tag/${data.tag_name}`);
+          // Fallback to the releases page if no specific asset is found
+          setDownloadUrl(
+            `https://github.com/${REPO}/releases/tag/${data.tag_name}`
+          );
         }
       } catch (error) {
         console.error("Failed to fetch release:", error);
@@ -79,5 +103,5 @@ export const useLatestRelease = () => {
     fetchRelease();
   }, []);
 
-  return { downloadUrl, version, os, isLoading };
+  return { downloadUrl, version, os, isLoading, totalDownloads };
 };
