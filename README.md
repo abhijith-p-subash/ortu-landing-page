@@ -17,6 +17,8 @@ This repository contains the source code for the landing page (`https://ortu.in`
 
 - **Bento Grid Layout**: A modern, modular way to showcase features.
 - **Dynamic Download Button**: Automatically detects the user's OS and fetches the correct installer (`.dmg`, `.msi`, `.AppImage`) from GitHub Releases.
+- **Live Download Count**: Fetches real-time download stats from the GitHub API.
+  - _Hidden by default_: Append `?stats=true` to the URL to view (e.g., `https://ortu.in/?stats=true`).
 - **Bold Typography**: "Type as Image" hero section with minimal aesthetics.
 - **Responsive Design**: Fully optimized for mobile, tablet, and desktop.
 - **Dark Mode**: A premium, developer-focused dark theme.
