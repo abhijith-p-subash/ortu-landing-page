@@ -2,7 +2,7 @@ import { Coffee } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const DonationSection = () => (
-  <section id="donate" className="py-32 px-4 relative">
+  <section id="donate" className="py-32 px-4 relative content-auto">
     <div className="max-w-4xl mx-auto relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}

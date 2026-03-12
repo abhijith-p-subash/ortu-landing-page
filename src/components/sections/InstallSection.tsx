@@ -70,7 +70,7 @@ const InstallSection = () => {
         </div>
       )}
 
-      <section id="download" className="py-24 px-4">
+      <section id="download" className="py-24 px-4 content-auto">
         <div className="max-w-5xl mx-auto">
           <div className="mb-10">
             <h2 className="text-4xl font-bold tracking-tight mb-3">macOS .dmg Download</h2>

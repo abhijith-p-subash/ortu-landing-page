@@ -2,7 +2,7 @@ import { Github } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => (
-  <nav className="fixed top-5 w-full z-50 px-4">
+  <nav aria-label="Primary" className="fixed top-5 w-full z-50 px-4">
     <div className="max-w-5xl mx-auto glass rounded-2xl px-5 py-3 flex justify-between items-center shadow-2xl shadow-black/40">
       <div className="flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg flex items-center justify-center ">
@@ -14,6 +14,7 @@ const Navbar = () => (
       <div className="hidden md:flex items-center gap-8">
         <a href="#why" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">Why</a>
         <a href="#download" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">Download</a>
+        <a href="#faq" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">FAQ</a>
         <a 
           href="https://github.com/abhijith-p-subash/ortu" 
           target="_blank" 

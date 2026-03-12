@@ -16,7 +16,7 @@ const FeaturesSection = () => {
   };
 
   return (
-    <section className="py-24 px-4 bg-primary text-white">
+    <section className="py-24 px-4 bg-primary text-white content-auto">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16" id="why">
           <h2 className="text-4xl font-bold tracking-tight mb-4">Why Ortu?</h2>

@@ -50,6 +50,11 @@
   .panel {
     @apply bg-surface border border-border;
   }
+
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar {
