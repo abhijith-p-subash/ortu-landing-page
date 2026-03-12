@@ -3,6 +3,7 @@ import Footer from './components/layout/Footer';
 import HeroSection from './components/sections/HeroSection';
 import FeaturesSection from './components/sections/FeaturesSection';
 import DonationSection from './components/sections/DonationSection';
+import InstallSection from './components/sections/InstallSection';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Navbar />
       <HeroSection />
       <FeaturesSection />
+      <InstallSection />
       <DonationSection />
       <Footer />
     </div>

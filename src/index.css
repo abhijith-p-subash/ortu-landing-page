@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1a1a1a;
-  --color-secondary: #1e1e1e;
-  --color-accent: #ef4444;
-  --color-accent-hover: #dc2626;
-  --color-border: #333333;
+  --color-primary: #111214;
+  --color-secondary: #17191c;
+  --color-surface: #202328;
+  --color-accent: #ff8a3d;
+  --color-accent-hover: #e67d36;
+  --color-olive: #aeb291;
+  --color-border: #2d3136;
   --color-border-glass: rgba(255, 255, 255, 0.08);
 
-  --font-sans: "Plus Jakarta Sans", "system-ui", "sans-serif";
+  --font-sans: "Manrope", "Avenir Next", "Segoe UI", "system-ui", "sans-serif";
   --font-mono: "JetBrains Mono", "monospace";
 }
 
@@ -18,7 +20,10 @@
   }
 
   body {
-    @apply bg-primary text-zinc-400 font-sans antialiased;
+    background:
+      radial-gradient(1200px 600px at 20% -20%, rgba(174, 178, 145, 0.1), transparent),
+      linear-gradient(180deg, #0f1012 0%, #121417 100%);
+    @apply text-zinc-400 font-sans antialiased;
   }
 
   h1,
@@ -31,26 +36,34 @@
 
 @layer utilities {
   .glass {
-    @apply bg-secondary border border-border;
+    @apply bg-secondary/85 border border-border backdrop-blur-sm;
   }
 
   .glow-text {
-    text-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    text-shadow: 0 0 20px rgba(255, 138, 61, 0.35);
   }
 
   .glow-box {
-    box-shadow: 0 0 40px -10px rgba(239, 68, 68, 0.2);
+    box-shadow: 0 0 40px -10px rgba(255, 138, 61, 0.25);
+  }
+
+  .panel {
+    @apply bg-surface border border-border;
   }
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
+  height: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  @apply bg-primary;
+  background: transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-zinc-900 border border-zinc-800 rounded-full hover:bg-zinc-800;
+  background: linear-gradient(180deg, #41464f, #333840);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
