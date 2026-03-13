@@ -43,7 +43,6 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-5 mt-10 w-full px-4 mb-6">
            <a
               href={downloadUrl}
-              target="_blank"
               rel="noopener noreferrer"
               onClick={handleDownloadClick}
               className="w-full sm:w-auto px-8 py-4 bg-accent text-white rounded-xl font-bold uppercase tracking-widest hover:bg-accent-hover transition-all flex items-center justify-center gap-3 text-sm min-w-[240px] shadow-lg shadow-accent/25"
