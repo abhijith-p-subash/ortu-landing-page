@@ -67,7 +67,7 @@ const FeaturesSection = () => {
           <motion.div variants={itemVariants} className="md:col-span-1 md:row-span-1 panel rounded-2xl p-6 flex items-center justify-between group hover:border-olive/50 transition-colors">
             <div>
               <h3 className="font-bold text-lg text-olive">Cross-Platform</h3>
-              <p className="text-xs text-zinc-500">macOS now, Windows/Linux next.</p>
+              <p className="text-xs text-zinc-500">Native app for macOS, Windows, and Linux.</p>
             </div>
             <Zap className="w-8 h-8 text-olive opacity-80" />
           </motion.div>

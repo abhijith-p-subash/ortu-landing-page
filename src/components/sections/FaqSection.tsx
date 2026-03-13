@@ -10,14 +10,14 @@ const faqs = [
       "No. Ortu is local-first and stores clipboard history on your device using local storage."
   },
   {
-    question: "How do I open Ortu on macOS after downloading the .dmg?",
+    question: "How do installation steps differ across macOS, Windows, and Linux?",
     answer:
-      "If Gatekeeper blocks launch, run the three Terminal commands shown in the download section: remove quarantine, re-sign the app, then open the app."
+      "Windows and Linux use the standard installer flow for their builds. On macOS, if Gatekeeper blocks the .dmg version, run the Terminal commands shown in the download section to remove quarantine and open the app."
   },
   {
     question: "Is Ortu available on Windows and Linux?",
     answer:
-      "The landing page currently prioritizes the macOS release. Native Windows and Linux builds are in active development."
+      "Yes. Ortu is a cross-platform clipboard manager available on macOS, Windows, and Linux."
   }
 ];
 

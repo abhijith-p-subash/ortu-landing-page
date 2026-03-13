@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Terminal, ShieldAlert, Copy, Check } from "lucide-react";
+import { useLatestRelease } from "../../hooks/useLatestRelease";
 
 const INSTALL_COMMANDS = `xattr -dr com.apple.quarantine "/Applications/Ortu.app"
 codesign --force --deep --sign - "/Applications/Ortu.app"
 open "/Applications/Ortu.app"`;
 
 const InstallSection = () => {
+  const { os } = useLatestRelease();
   const [copied, setCopied] = useState(false);
   const [mustRunCommands, setMustRunCommands] = useState(false);
   const [showMandatoryModal, setShowMandatoryModal] = useState(false);
@@ -31,6 +33,20 @@ const InstallSection = () => {
       console.error("Copy failed", error);
     }
   };
+
+  const installHeading =
+    os === "windows"
+      ? "Windows Download"
+      : os === "linux"
+        ? "Linux Download"
+        : "Cross-platform Download";
+
+  const installDescription =
+    os === "windows"
+      ? "Download the Windows installer and complete setup in a few clicks. macOS Gatekeeper commands are only needed for the macOS .dmg build."
+      : os === "linux"
+        ? "Download the Linux build and launch ORTU on your desktop. macOS Gatekeeper commands are only needed for the macOS .dmg build."
+        : "Choose the build for your platform. ORTU is available on macOS, Windows, and Linux, with extra Terminal steps only required for the macOS .dmg when Gatekeeper blocks launch.";
 
   return (
     <>
@@ -73,16 +89,15 @@ const InstallSection = () => {
       <section id="download" className="py-24 px-4 content-auto">
         <div className="max-w-5xl mx-auto">
           <div className="mb-10">
-            <h2 className="text-4xl font-bold tracking-tight mb-3">macOS .dmg Download</h2>
+            <h2 className="text-4xl font-bold tracking-tight mb-3">{installHeading}</h2>
             <p className="text-zinc-400 max-w-2xl">
-              Drag <span className="text-white font-semibold">Ortu.app</span> into your Applications
-              folder. If Gatekeeper blocks launch, run these commands in Terminal.
+              {installDescription}
             </p>
           </div>
 
           {mustRunCommands && (
             <div className="mb-4 rounded-xl border border-accent/45 bg-accent/10 px-4 py-3 text-sm text-zinc-100">
-              You downloaded the <span className="font-bold">.dmg</span>. Run these Terminal commands before first launch if macOS blocks the app.
+              You downloaded the <span className="font-bold">macOS .dmg</span>. Run these Terminal commands before first launch if Gatekeeper blocks the app.
             </div>
           )}
 
@@ -90,7 +105,7 @@ const InstallSection = () => {
             <div className="flex items-center justify-between gap-3 mb-4 text-zinc-300">
               <div className="flex items-center gap-3">
                 <Terminal className="w-5 h-5 text-accent" />
-                <span className="text-sm uppercase tracking-wider font-bold">Terminal Commands</span>
+                <span className="text-sm uppercase tracking-wider font-bold">macOS Gatekeeper Commands</span>
               </div>
               <button
                 type="button"
@@ -108,7 +123,7 @@ const InstallSection = () => {
 
             <div className="mt-5 inline-flex items-start gap-2 text-xs text-zinc-400 bg-[#ff8a3d]/10 border border-[#ff8a3d]/30 rounded-lg px-3 py-2">
               <ShieldAlert className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-              <p>Required only when macOS shows an unsigned app warning.</p>
+              <p>Required only when macOS shows an unsigned app warning for the .dmg build.</p>
             </div>
           </div>
         </div>

@@ -13,6 +13,7 @@ const Navbar = () => (
       
       <div className="hidden md:flex items-center gap-8">
         <a href="#why" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">Why</a>
+        <a href="#compare" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">Compare</a>
         <a href="#download" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">Download</a>
         <a href="#faq" className="text-xs font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">FAQ</a>
         <a 

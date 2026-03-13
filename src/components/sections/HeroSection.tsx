@@ -8,19 +8,13 @@ const HeroSection = () => {
 
   const getButtonText = () => {
     if (isLoading) return "Loading...";
-    if (os === "mac") return `Download for macOS (${version})`;
-    
-    // For other platforms, we show they can download the Mac version, 
-    // but we can also just say "Download for macOS" to be explicit about what they are getting.
-    // Or if we want to be "cool", just "Download App" and the message explains the rest.
-    // User request: "alow users to download mac file evern if windows and linux"
+    if (os === "windows") return `Download for Windows (${version})`;
+    if (os === "linux") return `Download for Linux (${version})`;
     return `Download for macOS (${version})`;
   };
 
   const handleDownloadClick = () => {
-    const ua = navigator.userAgent.toLowerCase();
-    const isMacDesktop = ua.includes("mac") && !/iphone|ipad|ipod/.test(ua);
-    if (!isMacDesktop) return;
+    if (os !== "mac") return;
     sessionStorage.setItem("ortu_requires_mac_steps", "true");
     window.dispatchEvent(new Event("ortu:dmg-download"));
     document.getElementById("download")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -43,7 +37,7 @@ const HeroSection = () => {
         <p className="mt-7 text-base md:text-lg text-zinc-400 max-w-2xl mx-auto font-medium px-4 leading-relaxed">
           Native, local-first clipboard history with keyboard-first recall.
           Built with Rust + Tauri for fast startup and zero telemetry.
-          <span className="text-xs text-zinc-500 mt-3 block uppercase tracking-widest">macOS available now · Windows & Linux in progress</span>
+          <span className="text-xs text-zinc-500 mt-3 block uppercase tracking-widest">Available on macOS, Windows, and Linux</span>
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-5 mt-10 w-full px-4 mb-6">
@@ -76,7 +70,7 @@ const HeroSection = () => {
         </div>
 
         <div className="flex items-center justify-center flex-wrap gap-2 mt-2">
-          {["Local SQLite", "No Cloud Sync", "Option + V"].map((tag) => (
+          {["macOS + Windows + Linux", "Local SQLite", "No Cloud Sync", "Option + V"].map((tag) => (
             <span key={tag} className="px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-zinc-300 rounded-full bg-[#202328]/70 border border-border">
               {tag}
             </span>
@@ -99,21 +93,6 @@ const HeroSection = () => {
                 </div>
             )}
         </motion.div>
-
-        {os !== 'mac' && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-olive/10 border border-olive/30 text-xs text-zinc-300 backdrop-blur-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-olive opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-olive"></span>
-            </span>
-            Windows and Linux builds are in active development.
-          </motion.div>
-        )}
 
       </motion.div>
 

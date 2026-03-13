@@ -2,6 +2,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import HeroSection from './components/sections/HeroSection';
 import FeaturesSection from './components/sections/FeaturesSection';
+import ComparisonSection from './components/sections/ComparisonSection';
 import DonationSection from './components/sections/DonationSection';
 import InstallSection from './components/sections/InstallSection';
 import FaqSection from './components/sections/FaqSection';
@@ -13,6 +14,7 @@ const App = () => {
       <main>
         <HeroSection />
         <FeaturesSection />
+        <ComparisonSection />
         <InstallSection />
         <FaqSection />
         <DonationSection />
