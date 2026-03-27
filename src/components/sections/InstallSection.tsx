@@ -34,12 +34,7 @@ const InstallSection = () => {
     }
   };
 
-  const installHeading =
-    os === "windows"
-      ? "Windows Download"
-      : os === "linux"
-        ? "Linux Download"
-        : "Cross-platform Download";
+  const installHeading = "MacOS Download";
 
   const installDescription =
     os === "windows"
@@ -53,12 +48,15 @@ const InstallSection = () => {
       {showMandatoryModal && (
         <div className="fixed inset-0 z-[100] bg-black/75 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="w-full max-w-2xl panel rounded-2xl border-accent/40 shadow-2xl shadow-black/60 p-6 md:p-8">
-            <p className="text-[11px] uppercase tracking-[0.2em] font-bold text-accent mb-3">Important for macOS</p>
+            <p className="text-[11px] uppercase tracking-[0.2em] font-bold text-accent mb-3">
+              Important for macOS
+            </p>
             <h3 className="text-2xl font-extrabold text-white leading-tight">
               Before opening Ortu.app, run these commands in Terminal.
             </h3>
             <p className="mt-3 text-zinc-300 text-sm">
-              This removes quarantine and re-signs the app bundle so macOS allows it to launch.
+              This removes quarantine and re-signs the app bundle so macOS
+              allows it to launch.
             </p>
 
             <pre className="mt-5 bg-[#0f1012] border border-border rounded-xl p-4 overflow-x-auto text-sm text-zinc-200 font-mono leading-7">
@@ -71,7 +69,11 @@ const InstallSection = () => {
                 onClick={copyCommands}
                 className="inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-lg border border-border bg-primary hover:bg-surface transition-colors"
               >
-                {copied ? <Check className="w-4 h-4 text-olive" /> : <Copy className="w-4 h-4 text-zinc-300" />}
+                {copied ? (
+                  <Check className="w-4 h-4 text-olive" />
+                ) : (
+                  <Copy className="w-4 h-4 text-zinc-300" />
+                )}
                 {copied ? "Copied" : "Copy Commands"}
               </button>
               <button
@@ -89,30 +91,40 @@ const InstallSection = () => {
       <section id="download" className="py-24 px-4 content-auto">
         <div className="max-w-5xl mx-auto">
           <div className="mb-10">
-            <h2 className="text-4xl font-bold tracking-tight mb-3">{installHeading}</h2>
-            <p className="text-zinc-400 max-w-2xl">
-              {installDescription}
-            </p>
+            <h2 className="text-4xl font-bold tracking-tight mb-3">
+              {installHeading}
+            </h2>
+            <p className="text-zinc-400 max-w-2xl">{installDescription}</p>
           </div>
 
           {mustRunCommands && (
             <div className="mb-4 rounded-xl border border-accent/45 bg-accent/10 px-4 py-3 text-sm text-zinc-100">
-              You downloaded the <span className="font-bold">macOS .dmg</span>. Run these Terminal commands before first launch if Gatekeeper blocks the app.
+              You downloaded the <span className="font-bold">macOS .dmg</span>.
+              Run these Terminal commands before first launch if Gatekeeper
+              blocks the app.
             </div>
           )}
 
-          <div className={`panel rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/30 ${mustRunCommands ? "ring-2 ring-accent/35" : ""}`}>
+          <div
+            className={`panel rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/30 ${mustRunCommands ? "ring-2 ring-accent/35" : ""}`}
+          >
             <div className="flex items-center justify-between gap-3 mb-4 text-zinc-300">
               <div className="flex items-center gap-3">
                 <Terminal className="w-5 h-5 text-accent" />
-                <span className="text-sm uppercase tracking-wider font-bold">macOS Gatekeeper Commands</span>
+                <span className="text-sm uppercase tracking-wider font-bold">
+                  macOS Gatekeeper Commands
+                </span>
               </div>
               <button
                 type="button"
                 onClick={copyCommands}
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg border border-border bg-primary hover:bg-surface transition-colors"
               >
-                {copied ? <Check className="w-4 h-4 text-olive" /> : <Copy className="w-4 h-4 text-zinc-300" />}
+                {copied ? (
+                  <Check className="w-4 h-4 text-olive" />
+                ) : (
+                  <Copy className="w-4 h-4 text-zinc-300" />
+                )}
                 {copied ? "Copied" : "Copy"}
               </button>
             </div>
@@ -123,7 +135,10 @@ const InstallSection = () => {
 
             <div className="mt-5 inline-flex items-start gap-2 text-xs text-zinc-400 bg-[#ff8a3d]/10 border border-[#ff8a3d]/30 rounded-lg px-3 py-2">
               <ShieldAlert className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-              <p>Required only when macOS shows an unsigned app warning for the .dmg build.</p>
+              <p>
+                Required only when macOS shows an unsigned app warning for the
+                .dmg build.
+              </p>
             </div>
           </div>
         </div>
