@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/app-icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Ortu Clipboard Manager | Fast, Private, Open Source</title>
     <meta
       name="description"
@@ -20,6 +22,7 @@
     <link rel="canonical" href="https://ortu.in/" />
     <link rel="alternate" href="https://ortu.in/" hreflang="en" />
     <link rel="apple-touch-icon" href="/app-icon.svg" />
+    <link rel="preload" as="image" href="/w1.png" fetchpriority="high" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -35,6 +38,9 @@
       content="Local-first clipboard history with keyboard-first recall. Built with Rust + Tauri."
     />
     <meta property="og:image" content="https://ortu.in/w1.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:updated_time" content="2026-03-27T00:00:00Z" />
     <meta property="og:image:alt" content="Ortu clipboard manager interface preview" />
 
     <!-- Twitter -->
@@ -50,14 +56,25 @@
     />
     <meta name="twitter:image" content="https://ortu.in/w1.png" />
     <meta name="twitter:image:alt" content="Ortu clipboard manager interface preview" />
+    <meta name="twitter:site" content="@ortuapp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://api.github.com" crossorigin />
     <link rel="dns-prefetch" href="//api.github.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
-      rel="stylesheet"
+      onload="this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -79,6 +96,18 @@
           "@type": "Organization",
           "name": "Ortu Project"
         }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ortu",
+        "url": "https://ortu.in/",
+        "logo": "https://ortu.in/app-icon.svg",
+        "sameAs": [
+          "https://github.com/abhijith-p-subash/ortu"
+        ]
       }
     </script>
     <script type="application/ld+json">

@@ -5,9 +5,16 @@ const Navbar = () => (
   <nav aria-label="Primary" className="fixed top-5 w-full z-50 px-4">
     <div className="max-w-5xl mx-auto glass rounded-2xl px-5 py-3 flex justify-between items-center shadow-2xl shadow-black/40">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg flex items-center justify-center ">
-           <img className="w-full h-full object-contain" src="/app-icon.svg" alt="Ortu Logo" />
-        </div>
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center ">
+            <img
+              className="w-full h-full object-contain"
+              src="/app-icon.svg"
+              alt="Ortu Logo"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
+          </div>
         <span className="text-lg font-black text-white tracking-tighter">ORTU</span>
       </div>
       
