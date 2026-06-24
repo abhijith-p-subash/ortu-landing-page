@@ -25,7 +25,7 @@ const TechStackSection = () => {
       icon: <Shield className="w-6 h-6" />,
       name: "SvelteKit",
       description: "Reactive UI with minimal overhead, providing a smooth user experience.",
-      color: "text-red-500"
+      color: "text-sage"
     }
   ];
 

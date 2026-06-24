@@ -5,13 +5,18 @@ import { pathToFileURL } from 'url';
 const distDir = path.resolve('dist');
 const serverEntry = path.resolve('dist/server/entry-server.js');
 const templatePath = path.resolve('index.html');
-const manifestPath = path.resolve('dist/manifest.json');
+// Vite 5+ emits the manifest under dist/.vite/; keep the legacy path as a fallback.
+const manifestCandidates = [
+  path.resolve('dist/.vite/manifest.json'),
+  path.resolve('dist/manifest.json'),
+];
 
 async function main() {
   if (!fs.existsSync(serverEntry)) {
     throw new Error('Server bundle not found. Run vite build --ssr first.');
   }
-  if (!fs.existsSync(manifestPath)) {
+  const manifestPath = manifestCandidates.find((p) => fs.existsSync(p));
+  if (!manifestPath) {
     throw new Error('Manifest not found. Run vite build with --manifest.');
   }
 

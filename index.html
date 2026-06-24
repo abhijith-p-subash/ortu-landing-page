@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <title>Ortu Clipboard Manager | Fast, Private, Open Source</title>
+    <title>Ortu v2.0.0 — Fast, Private, Open Source Clipboard Manager</title>
     <meta
       name="description"
-      content="Ortu is a local-first clipboard manager built with Rust and Tauri. Fast keyboard-first workflow, zero telemetry, and open source."
+      content="Ortu v2.0.0 is a fast, local-first, cross-platform clipboard manager built with Rust + Tauri. Capture text, images & files, paste stack, encrypted secrets, FTS5 search — zero telemetry, open source (MIT)."
     />
     <meta
       name="keywords"
-      content="clipboard manager, macOS clipboard manager, open source clipboard tool, rust tauri app, keyboard first productivity"
+      content="clipboard manager, cross-platform clipboard manager, open source clipboard tool, rust tauri app, encrypted clipboard, paste stack, full-text clipboard search, keyboard first productivity"
     />
     <meta name="author" content="Ortu Project" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
@@ -31,11 +31,11 @@
     <meta property="og:locale" content="en_US" />
     <meta
       property="og:title"
-      content="Ortu Clipboard Manager | Fast, Private, Open Source"
+      content="Ortu v2.0.0 — Fast, Private, Open Source Clipboard Manager"
     />
     <meta
       property="og:description"
-      content="Local-first clipboard history with keyboard-first recall. Built with Rust + Tauri."
+      content="Local-first, cross-platform clipboard history with images & files, paste stack, encryption and FTS5 search. Built with Rust + Tauri. Zero telemetry, open source."
     />
     <meta property="og:image" content="https://ortu.in/w1.png" />
     <meta property="og:image:width" content="1200" />
@@ -48,11 +48,11 @@
     <meta name="twitter:url" content="https://ortu.in/" />
     <meta
       name="twitter:title"
-      content="Ortu Clipboard Manager"
+      content="Ortu v2.0.0 — Fast, Private, Open Source Clipboard Manager"
     />
     <meta
       name="twitter:description"
-      content="Fast local-first clipboard manager with zero telemetry."
+      content="Fast, local-first, cross-platform clipboard manager with images & files, paste stack, encryption and FTS5 search. Zero telemetry, open source."
     />
     <meta name="twitter:image" content="https://ortu.in/w1.png" />
     <meta name="twitter:image:alt" content="Ortu clipboard manager interface preview" />
@@ -82,11 +82,11 @@
         "name": "Ortu",
         "applicationCategory": "ProductivityApplication",
         "operatingSystem": "macOS, Windows, Linux",
-        "description": "Local-first open source clipboard manager with keyboard-first recall and zero telemetry.",
+        "description": "Local-first open source clipboard manager with images & files, paste stack, encryption at rest, FTS5 full-text search and zero telemetry.",
         "url": "https://ortu.in/",
         "downloadUrl": "https://github.com/abhijith-p-subash/ortu/releases/latest",
         "image": "https://ortu.in/w1.png",
-        "softwareVersion": "latest",
+        "softwareVersion": "2.0.0",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -137,6 +137,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Run the three Terminal commands shown on the download section to remove quarantine and re-sign the app."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I open Ortu on Windows if SmartScreen blocks it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If Windows SmartScreen shows a warning for the unsigned build, click 'More info' and then 'Run anyway' to continue the installation."
             }
           }
         ]

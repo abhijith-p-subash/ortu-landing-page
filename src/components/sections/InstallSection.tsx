@@ -59,7 +59,7 @@ const InstallSection = () => {
               allows it to launch.
             </p>
 
-            <pre className="mt-5 bg-[#0f1012] border border-border rounded-xl p-4 overflow-x-auto text-sm text-zinc-200 font-mono leading-7">
+            <pre className="mt-5 bg-bg border border-border rounded-xl p-4 overflow-x-auto text-sm text-zinc-200 font-mono leading-7">
               <code>{INSTALL_COMMANDS}</code>
             </pre>
 
@@ -67,10 +67,10 @@ const InstallSection = () => {
               <button
                 type="button"
                 onClick={copyCommands}
-                className="inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-lg border border-border bg-primary hover:bg-surface transition-colors"
+                className="inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-lg border border-border bg-surface hover:bg-raised transition-colors"
               >
                 {copied ? (
-                  <Check className="w-4 h-4 text-olive" />
+                  <Check className="w-4 h-4 text-sage" />
                 ) : (
                   <Copy className="w-4 h-4 text-zinc-300" />
                 )}
@@ -118,10 +118,10 @@ const InstallSection = () => {
               <button
                 type="button"
                 onClick={copyCommands}
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg border border-border bg-primary hover:bg-surface transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg border border-border bg-surface hover:bg-raised transition-colors"
               >
                 {copied ? (
-                  <Check className="w-4 h-4 text-olive" />
+                  <Check className="w-4 h-4 text-sage" />
                 ) : (
                   <Copy className="w-4 h-4 text-zinc-300" />
                 )}
@@ -129,15 +129,47 @@ const InstallSection = () => {
               </button>
             </div>
 
-            <pre className="bg-[#0f1012] border border-border rounded-xl p-4 overflow-x-auto text-sm text-zinc-200 font-mono leading-7">
+            <pre className="bg-bg border border-border rounded-xl p-4 overflow-x-auto text-sm text-zinc-200 font-mono leading-7">
               <code>{INSTALL_COMMANDS}</code>
             </pre>
 
-            <div className="mt-5 inline-flex items-start gap-2 text-xs text-zinc-400 bg-[#ff8a3d]/10 border border-[#ff8a3d]/30 rounded-lg px-3 py-2">
+            <div className="mt-5 inline-flex items-start gap-2 text-xs text-zinc-400 bg-accent/10 border border-accent/30 rounded-lg px-3 py-2">
               <ShieldAlert className="w-4 h-4 text-accent mt-0.5 shrink-0" />
               <p>
                 Required only when macOS shows an unsigned app warning for the
                 .dmg build.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            <div className="panel rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-2 text-zinc-200">
+                <ShieldAlert className="w-4 h-4 text-sage shrink-0" />
+                <span className="text-sm font-bold uppercase tracking-wider">
+                  Windows SmartScreen
+                </span>
+              </div>
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                If Windows SmartScreen warns about the unsigned build, click{" "}
+                <span className="font-semibold text-zinc-200">“More info”</span>{" "}
+                then{" "}
+                <span className="font-semibold text-zinc-200">“Run anyway”</span>{" "}
+                to continue. Ortu is open source—review the code before
+                installing.
+              </p>
+            </div>
+            <div className="panel rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-2 text-zinc-200">
+                <Terminal className="w-4 h-4 text-sage shrink-0" />
+                <span className="text-sm font-bold uppercase tracking-wider">
+                  Linux
+                </span>
+              </div>
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                Download the <span className="font-semibold text-zinc-200">.AppImage</span>,
+                mark it executable (<span className="font-mono text-zinc-200">chmod +x</span>)
+                and run it. No extra steps required.
               </p>
             </div>
           </div>

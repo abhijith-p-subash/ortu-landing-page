@@ -12,7 +12,17 @@ const faqs = [
   {
     question: "How do installation steps differ across macOS, Windows, and Linux?",
     answer:
-      "Windows and Linux use the standard installer flow for their builds. On macOS, if Gatekeeper blocks the .dmg version, run the Terminal commands shown in the download section to remove quarantine and open the app."
+      "Linux uses the standard installer flow for its build. On macOS, if Gatekeeper blocks the .dmg version, run the Terminal commands shown in the download section to remove quarantine and open the app. On Windows, if SmartScreen warns about the unsigned build, click “More info” then “Run anyway” to continue."
+  },
+  {
+    question: "Windows SmartScreen is blocking the installer. What do I do?",
+    answer:
+      "That warning appears because the build is not yet code-signed. Click “More info” on the SmartScreen dialog, then “Run anyway”. The app is open source—you can review every line on GitHub before installing."
+  },
+  {
+    question: "What's new in Ortu v2.0.0?",
+    answer:
+      "v2.0.0 adds image & file capture with thumbnails, a paste stack for multi-paste, encryption at rest for detected secrets (AES-256-GCM), FTS5 full-text search, customizable global shortcuts, snippets & transforms, and flexible history retention. See the full changelog on GitHub Releases."
   },
   {
     question: "Is Ortu available on Windows and Linux?",

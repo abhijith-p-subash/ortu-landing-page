@@ -1,14 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #111214;
-  --color-secondary: #17191c;
-  --color-surface: #202328;
-  --color-accent: #ff8a3d;
-  --color-accent-hover: #e67d36;
-  --color-olive: #aeb291;
+  /* Brand palette — Ortu dark theme (source of truth) */
+  --color-bg: #08090c; /* app background */
+  --color-surface: #13151b; /* cards / glass panels */
+  --color-raised: #1c1f28; /* raised panels */
+  --color-fg: #ffffff; /* primary foreground text */
+
+  --color-accent: #ff8a3d; /* primary accent (orange) */
+  --color-accent-hover: #ff9a56; /* accent hover */
+  --color-sage: #aeb291; /* secondary accent (sage/olive) */
+
   --color-border: #2d3136;
   --color-border-glass: rgba(255, 255, 255, 0.08);
+
+  /* Legacy aliases kept so existing utility classes keep working */
+  --color-primary: #08090c; /* = bg */
+  --color-secondary: #13151b; /* = surface */
+  --color-olive: #aeb291; /* = sage */
 
   --font-sans: "Manrope", "Avenir Next", "Segoe UI", "system-ui", "sans-serif";
   --font-mono: "JetBrains Mono", "monospace";
@@ -22,7 +31,7 @@
   body {
     background:
       radial-gradient(1200px 600px at 20% -20%, rgba(174, 178, 145, 0.1), transparent),
-      linear-gradient(180deg, #0f1012 0%, #121417 100%);
+      linear-gradient(180deg, #08090c 0%, #0d0f13 100%);
     @apply text-zinc-400 font-sans antialiased;
   }
 
@@ -48,12 +57,18 @@
   }
 
   .panel {
-    @apply bg-surface border border-border;
+    @apply bg-raised border border-border;
   }
 
   .content-auto {
     content-visibility: auto;
     contain-intrinsic-size: 1px 900px;
+  }
+
+  /* Keycap for keyboard-first shortcuts */
+  .keycap {
+    @apply inline-flex items-center justify-center font-mono text-zinc-100 bg-raised border border-border rounded-md;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
   }
 }
 

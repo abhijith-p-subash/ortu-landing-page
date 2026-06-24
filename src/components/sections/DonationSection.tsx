@@ -12,7 +12,7 @@ const DonationSection = () => (
       >
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 blur-3xl -z-10"></div>
         
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-[2rem] bg-olive text-primary mb-10 shadow-2xl shadow-olive/20">
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-[2rem] bg-sage text-bg mb-10 shadow-2xl shadow-sage/20">
           <Coffee className="w-10 h-10" />
         </div>
         
