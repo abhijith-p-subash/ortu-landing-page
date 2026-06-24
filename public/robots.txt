@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ortu.in/sitemap.xml
+Sitemap: https://ortu.abhijithpsubash.com/sitemap.xml

@@ -6,57 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <title>Ortu v2.0.0 — Fast, Private, Open Source Clipboard Manager</title>
+    <title>Ortu — Free Open-Source Clipboard Manager for Mac, Windows & Linux</title>
     <meta
       name="description"
-      content="Ortu v2.0.0 is a fast, local-first, cross-platform clipboard manager built with Rust + Tauri. Capture text, images & files, paste stack, encrypted secrets, FTS5 search — zero telemetry, open source (MIT)."
+      content="Ortu is a free, open-source clipboard manager for macOS, Windows & Linux. Capture text, images & files, paste stack, encrypt secrets and search instantly — local-first, fast, zero telemetry."
     />
     <meta
       name="keywords"
-      content="clipboard manager, cross-platform clipboard manager, open source clipboard tool, rust tauri app, encrypted clipboard, paste stack, full-text clipboard search, keyboard first productivity"
+      content="clipboard manager, free clipboard manager, open source clipboard manager, mac clipboard manager, windows clipboard manager, linux clipboard manager, clipboard history, paste stack, encrypted clipboard, rust tauri app, keyboard first productivity"
     />
-    <meta name="author" content="Ortu Project" />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
-    <meta name="theme-color" content="#111214" />
-    <meta name="application-name" content="Ortu Clipboard Manager" />
-    <link rel="canonical" href="https://ortu.in/" />
-    <link rel="alternate" href="https://ortu.in/" hreflang="en" />
+    <meta name="author" content="Abhijith P Subash" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="theme-color" content="#08090c" />
+    <meta name="application-name" content="Ortu" />
+    <meta name="apple-mobile-web-app-title" content="Ortu" />
+    <link rel="canonical" href="https://ortu.abhijithpsubash.com/" />
+    <link rel="alternate" href="https://ortu.abhijithpsubash.com/" hreflang="en" />
+    <link rel="alternate" href="https://ortu.abhijithpsubash.com/" hreflang="x-default" />
     <link rel="apple-touch-icon" href="/app-icon.svg" />
-    <link rel="preload" as="image" href="/w1.png" fetchpriority="high" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ortu.in/" />
+    <meta property="og:url" content="https://ortu.abhijithpsubash.com/" />
     <meta property="og:site_name" content="Ortu" />
     <meta property="og:locale" content="en_US" />
     <meta
       property="og:title"
-      content="Ortu v2.0.0 — Fast, Private, Open Source Clipboard Manager"
+      content="Ortu — Free Open-Source Clipboard Manager for Mac, Windows & Linux"
     />
     <meta
       property="og:description"
-      content="Local-first, cross-platform clipboard history with images & files, paste stack, encryption and FTS5 search. Built with Rust + Tauri. Zero telemetry, open source."
+      content="Local-first, cross-platform clipboard history with images & files, paste stack, encryption and instant full-text search. Built with Rust + Tauri. Free, open source, zero telemetry."
     />
-    <meta property="og:image" content="https://ortu.in/w1.png" />
+    <meta property="og:image" content="https://ortu.abhijithpsubash.com/w1.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:updated_time" content="2026-03-27T00:00:00Z" />
     <meta property="og:image:alt" content="Ortu clipboard manager interface preview" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://ortu.in/" />
+    <meta name="twitter:url" content="https://ortu.abhijithpsubash.com/" />
     <meta
       name="twitter:title"
-      content="Ortu v2.0.0 — Fast, Private, Open Source Clipboard Manager"
+      content="Ortu — Free Open-Source Clipboard Manager for Mac, Windows & Linux"
     />
     <meta
       name="twitter:description"
-      content="Fast, local-first, cross-platform clipboard manager with images & files, paste stack, encryption and FTS5 search. Zero telemetry, open source."
+      content="Fast, local-first, cross-platform clipboard manager with images & files, paste stack, encryption and full-text search. Free, open source, zero telemetry."
     />
-    <meta name="twitter:image" content="https://ortu.in/w1.png" />
+    <meta name="twitter:image" content="https://ortu.abhijithpsubash.com/w1.png" />
     <meta name="twitter:image:alt" content="Ortu clipboard manager interface preview" />
-    <meta name="twitter:site" content="@ortuapp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://api.github.com" crossorigin />
@@ -78,35 +79,65 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Ortu",
-        "applicationCategory": "ProductivityApplication",
-        "operatingSystem": "macOS, Windows, Linux",
-        "description": "Local-first open source clipboard manager with images & files, paste stack, encryption at rest, FTS5 full-text search and zero telemetry.",
-        "url": "https://ortu.in/",
-        "downloadUrl": "https://github.com/abhijith-p-subash/ortu/releases/latest",
-        "image": "https://ortu.in/w1.png",
-        "softwareVersion": "2.0.0",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Ortu Project"
-        }
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Ortu",
-        "url": "https://ortu.in/",
-        "logo": "https://ortu.in/app-icon.svg",
-        "sameAs": [
-          "https://github.com/abhijith-p-subash/ortu"
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://ortu.abhijithpsubash.com/#app",
+            "name": "Ortu",
+            "alternateName": "Ortu Clipboard Manager",
+            "applicationCategory": "ProductivityApplication",
+            "operatingSystem": "macOS, Windows, Linux",
+            "description": "Free, open-source, local-first clipboard manager for macOS, Windows and Linux with images & files, paste stack, encryption at rest, full-text search and zero telemetry. Built with Rust + Tauri.",
+            "url": "https://ortu.abhijithpsubash.com/",
+            "downloadUrl": "https://github.com/abhijith-p-subash/ortu/releases/latest",
+            "softwareHelp": "https://github.com/abhijith-p-subash/ortu#readme",
+            "releaseNotes": "https://github.com/abhijith-p-subash/ortu/blob/main/CHANGELOG.md",
+            "image": "https://ortu.abhijithpsubash.com/w1.png",
+            "screenshot": "https://ortu.abhijithpsubash.com/w1.png",
+            "softwareVersion": "2.0.0",
+            "dateModified": "2026-06-24",
+            "inLanguage": "en",
+            "license": "https://github.com/abhijith-p-subash/ortu/blob/main/LICENSE",
+            "isAccessibleForFree": true,
+            "featureList": [
+              "Multi-format capture (text, images, files)",
+              "Smart auto-grouping of clips",
+              "Paste stack for multi-paste",
+              "Full-text search (SQLite FTS5)",
+              "Encryption at rest for detected secrets (AES-256-GCM)",
+              "Customizable global keyboard shortcuts",
+              "Local-first storage, no cloud, no telemetry"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Abhijith P Subash"
+            },
+            "publisher": { "@id": "https://ortu.abhijithpsubash.com/#org" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://ortu.abhijithpsubash.com/#org",
+            "name": "Ortu",
+            "url": "https://ortu.abhijithpsubash.com/",
+            "logo": "https://ortu.abhijithpsubash.com/app-icon.svg",
+            "sameAs": [
+              "https://github.com/abhijith-p-subash/ortu",
+              "https://buymeacoffee.com/abhijithpsubash"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://ortu.abhijithpsubash.com/#website",
+            "name": "Ortu",
+            "url": "https://ortu.abhijithpsubash.com/",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://ortu.abhijithpsubash.com/#org" }
+          }
         ]
       }
     </script>
@@ -117,34 +148,50 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Is Ortu free and open source?",
+            "name": "Is Ortu clipboard manager free and open source?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Ortu is MIT licensed and free to use."
+              "text": "Yes. Ortu is MIT licensed and free to use. You can inspect the source code and contribute through GitHub."
             }
           },
           {
             "@type": "Question",
-            "name": "Does Ortu upload clipboard data to cloud servers?",
+            "name": "Does Ortu send clipboard data to cloud servers?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Ortu is local-first and stores clipboard history on your device."
+              "text": "No. Ortu is local-first and stores clipboard history on your device using local storage."
             }
           },
           {
             "@type": "Question",
-            "name": "How do I open Ortu on macOS if Gatekeeper blocks it?",
+            "name": "How do installation steps differ across macOS, Windows, and Linux?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Run the three Terminal commands shown on the download section to remove quarantine and re-sign the app."
+              "text": "Linux uses the standard installer flow for its build. On macOS, if Gatekeeper blocks the .dmg version, run the Terminal commands shown in the download section to remove quarantine and open the app. On Windows, if SmartScreen warns about the unsigned build, click More info then Run anyway to continue."
             }
           },
           {
             "@type": "Question",
-            "name": "How do I open Ortu on Windows if SmartScreen blocks it?",
+            "name": "Windows SmartScreen is blocking the installer. What do I do?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "If Windows SmartScreen shows a warning for the unsigned build, click 'More info' and then 'Run anyway' to continue the installation."
+              "text": "That warning appears because the build is not yet code-signed. Click More info on the SmartScreen dialog, then Run anyway. The app is open source, so you can review every line on GitHub before installing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What's new in Ortu v2.0.0?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "v2.0.0 adds image & file capture with thumbnails, a paste stack for multi-paste, encryption at rest for detected secrets (AES-256-GCM), FTS5 full-text search, customizable global shortcuts, snippets & transforms, and flexible history retention. See the full changelog on GitHub Releases."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Ortu available on Windows and Linux?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Ortu is a cross-platform clipboard manager available on macOS, Windows, and Linux."
             }
           }
         ]

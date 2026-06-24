@@ -24,7 +24,10 @@ const HeroSection = () => {
         className="text-center z-10 w-full max-w-5xl mx-auto"
       >
         <h1 className="text-[20vw] md:text-[10rem] leading-none font-black tracking-tighter text-white/55 select-none">
-          ORTU
+          <span aria-hidden="true">ORTU</span>
+          <span className="sr-only">
+            Ortu — free open-source clipboard manager for macOS, Windows and Linux
+          </span>
         </h1>
         <div className="text-3xl md:text-6xl font-bold tracking-tight text-white -mt-4 md:-mt-16">
           Clipboard memory for people who move fast.

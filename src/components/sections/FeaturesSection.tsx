@@ -130,7 +130,7 @@ const FeaturesSection = () => {
         <div className="mb-16" id="why">
           <Eyebrow>Everything in v2.0.0</Eyebrow>
           <h2 className="mt-5 text-3xl md:text-4xl font-bold tracking-tight mb-4 leading-[1.15]">
-            The full toolkit, one tiny app
+            A complete clipboard manager in one tiny app
           </h2>
           <p className="text-zinc-400 max-w-2xl">
             A focused, local-first clipboard manager with native performance,
