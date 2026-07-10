@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import Eyebrow from "../ui/Eyebrow";
+import { useDownload } from "../../hooks/useDownload";
 import {
   Files,
   Boxes,
@@ -124,11 +125,14 @@ const itemVariants = {
 };
 
 const FeaturesSection = () => {
+  const { version } = useDownload();
+  const versionLabel = !version || version === "Latest" ? "the latest release" : version;
+
   return (
     <section className="py-24 px-4 bg-bg text-white content-auto">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16" id="why">
-          <Eyebrow>Everything in v2.0.0</Eyebrow>
+          <Eyebrow>Everything in {versionLabel}</Eyebrow>
           <h2 className="mt-5 text-3xl md:text-4xl font-bold tracking-tight mb-4 leading-[1.15]">
             A complete clipboard manager in one tiny app
           </h2>

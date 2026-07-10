@@ -85,6 +85,23 @@ const HeroSection = () => {
           )}
         </div>
 
+        <div className="flex items-center justify-center mt-6">
+          <a
+            href="https://www.producthunt.com/products/ortu?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-ortu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              alt="Ortu - The clipboard manager for people who copy-paste for a living | Product Hunt"
+              width="180"
+              height="39"
+              loading="lazy"
+              className="w-45 h-auto"
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1193035&theme=light&t=1783700447816"
+            />
+          </a>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
