@@ -7,6 +7,18 @@
   NODE_VERSION = "22"
   NPM_FLAGS = "--legacy-peer-deps"
 
+# Clean URLs for the static policy pages in public/.
+# These must come before the SPA catch-all — first match wins.
+[[redirects]]
+  from = "/code-signing-policy"
+  to = "/code-signing-policy.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

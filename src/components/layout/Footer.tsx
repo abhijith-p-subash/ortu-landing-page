@@ -6,13 +6,27 @@ const links = [
   { href: "https://buymeacoffee.com/abhijithpsubash", label: "Support" },
 ];
 
+const policyLinks = [
+  { href: "/privacy-policy", label: "Privacy" },
+  { href: "/code-signing-policy", label: "Code signing" },
+];
+
 const Footer = () => (
   <footer className="py-12 px-4 border-t border-border">
     <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
       <p className="text-zinc-500 text-sm text-center md:text-left">
         © 2026 Ortu · Local-first clipboard manager · MIT licensed
       </p>
-      <div className="flex items-center gap-6">
+      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+        {policyLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            className="text-zinc-500 hover:text-white transition-colors text-sm"
+          >
+            {link.label}
+          </a>
+        ))}
         {links.map((link) => (
           <a
             key={link.label}

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/app-icon.svg" />
+    <title>Code Signing Policy — Ortu</title>
+    <meta
+      name="description"
+      content="How Ortu releases are built and signed, who is allowed to sign them, and how to verify a download."
+    />
+    <meta name="theme-color" content="#08090c" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://ortu.abhijithpsubash.com/code-signing-policy" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Ortu" />
+    <meta property="og:title" content="Code Signing Policy — Ortu" />
+    <meta
+      property="og:description"
+      content="How Ortu releases are built and signed, who is allowed to sign them, and how to verify a download."
+    />
+    <meta property="og:url" content="https://ortu.abhijithpsubash.com/code-signing-policy" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #08090c;
+        --surface: #13151b;
+        --raised: #1c1f28;
+        --fg: #ffffff;
+        --muted: #a1a1aa;
+        --dim: #71717a;
+        --accent: #ff8a3d;
+        --accent-hover: #ff9a56;
+        --border: #2d3136;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(1200px 600px at 20% -20%, rgba(174, 178, 145, 0.1), transparent),
+          linear-gradient(180deg, #08090c 0%, #0d0f13 100%);
+        background-attachment: fixed;
+        color: var(--muted);
+        font-family: "Manrope", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection {
+        background: rgba(255, 138, 61, 0.2);
+        color: #fff;
+      }
+      .wrap {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+      header.site {
+        border-bottom: 1px solid var(--border);
+        padding: 1.25rem 0;
+      }
+      header.site .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--fg);
+        font-weight: 800;
+        font-size: 1.05rem;
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+      .brand img {
+        width: 26px;
+        height: 26px;
+      }
+      .back {
+        color: var(--dim);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.15s ease;
+      }
+      .back:hover {
+        color: var(--fg);
+      }
+      main {
+        padding: 3rem 0 4rem;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid rgba(255, 138, 61, 0.3);
+        background: rgba(255, 138, 61, 0.07);
+        border-radius: 999px;
+        padding: 0.3rem 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+      h1 {
+        color: var(--fg);
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        font-weight: 800;
+        margin: 0 0 0.75rem;
+      }
+      .lede {
+        font-size: 1.075rem;
+        color: var(--muted);
+        margin: 0 0 0.5rem;
+      }
+      .updated {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+        color: var(--dim);
+        margin-bottom: 2.5rem;
+      }
+      h2 {
+        color: var(--fg);
+        font-size: 1.4rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 3rem 0 1rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid var(--border);
+      }
+      h3 {
+        color: var(--fg);
+        font-size: 1.075rem;
+        font-weight: 700;
+        margin: 2rem 0 0.6rem;
+      }
+      p {
+        margin: 0 0 1rem;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 138, 61, 0.35);
+        transition: color 0.15s ease, border-color 0.15s ease;
+      }
+      a:hover {
+        color: var(--accent-hover);
+        border-bottom-color: var(--accent-hover);
+      }
+      ul {
+        margin: 0 0 1rem;
+        padding-left: 1.25rem;
+      }
+      li {
+        margin-bottom: 0.5rem;
+      }
+      li::marker {
+        color: var(--accent);
+      }
+      strong {
+        color: #e4e4e7;
+        font-weight: 700;
+      }
+      code {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.86em;
+        background: var(--raised);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        padding: 0.12em 0.4em;
+        color: #e4e4e7;
+      }
+      pre {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1rem 1.15rem;
+        overflow-x: auto;
+        margin: 0 0 1.25rem;
+      }
+      pre code {
+        background: none;
+        border: 0;
+        padding: 0;
+        font-size: 0.85rem;
+        color: #d4d4d8;
+      }
+      .table-scroll {
+        overflow-x: auto;
+        margin: 0 0 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 460px;
+        font-size: 0.925rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      th {
+        color: var(--fg);
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.02);
+        white-space: nowrap;
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      .note {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 10px 10px 0;
+        padding: 1rem 1.25rem;
+        margin: 0 0 1.5rem;
+      }
+      .note p:last-child {
+        margin-bottom: 0;
+      }
+      footer.site {
+        border-top: 1px solid var(--border);
+        padding: 2rem 0 3rem;
+        color: var(--dim);
+        font-size: 0.875rem;
+      }
+      footer.site .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+      footer.site a {
+        color: var(--dim);
+        border-bottom: 0;
+      }
+      footer.site a:hover {
+        color: var(--fg);
+      }
+      .flinks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+      }
+      @media (max-width: 640px) {
+        main {
+          padding: 2rem 0 3rem;
+        }
+        h2 {
+          margin-top: 2.25rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a class="brand" href="/">
+          <img src="/app-icon.svg" alt="" width="26" height="26" />
+          Ortu
+        </a>
+        <a class="back" href="/">← Back to site</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap">
+        <span class="eyebrow">Transparency</span>
+        <h1>Code Signing Policy</h1>
+        <p class="lede">
+          Who is allowed to produce a signed build of Ortu, how those builds are made, and
+          how you can check that the copy you downloaded really came from us.
+        </p>
+        <p class="updated">Last updated: 24 July 2026</p>
+
+        <p>
+          This policy is published to meet the requirements of the
+          <a href="https://signpath.org/" rel="noopener">SignPath Foundation</a> free code
+          signing program for open source projects. It is mirrored in the repository at
+          <a
+            href="https://github.com/abhijith-p-subash/ortu/blob/main/docs/CODE_SIGNING_POLICY.md"
+            rel="noopener"
+            >docs/CODE_SIGNING_POLICY.md</a
+          >.
+        </p>
+
+        <h2>Project</h2>
+        <div class="table-scroll">
+          <table>
+            <tbody>
+              <tr>
+                <th>Project</th>
+                <td>Ortu — local-first clipboard manager</td>
+              </tr>
+              <tr>
+                <th>Source</th>
+                <td>
+                  <a href="https://github.com/abhijith-p-subash/ortu" rel="noopener"
+                    >github.com/abhijith-p-subash/ortu</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th>License</th>
+                <td>
+                  <a
+                    href="https://github.com/abhijith-p-subash/ortu/blob/main/LICENSE"
+                    rel="noopener"
+                    >MIT</a
+                  >
+                  — OSI-approved, no commercial dual licensing
+                </td>
+              </tr>
+              <tr>
+                <th>Privacy policy</th>
+                <td><a href="/privacy-policy">ortu.abhijithpsubash.com/privacy-policy</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Ortu contains no proprietary or closed-source components beyond the operating
+          system libraries and the platform WebView runtime that every Tauri application
+          links against.
+        </p>
+
+        <h2>Team and roles</h2>
+        <p>
+          Ortu is currently maintained by a single person. Roles are listed separately
+          because they carry different responsibilities, even where one person holds more
+          than one.
+        </p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>GitHub</th>
+                <th>Roles</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Abhijith P Subash</td>
+                <td>
+                  <a href="https://github.com/abhijith-p-subash" rel="noopener"
+                    >@abhijith-p-subash</a
+                  >
+                </td>
+                <td>Author, Reviewer, Approver, Release manager</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li><strong>Authors</strong> write code and open pull requests.</li>
+          <li><strong>Reviewers</strong> review every change before it reaches <code>main</code>.</li>
+          <li>
+            <strong>Approvers</strong> are the only people who may trigger a signed release
+            build.
+          </li>
+          <li>
+            Contributors from outside the team are <strong>authors only</strong>. They cannot
+            merge their own changes and cannot trigger a signed build.
+          </li>
+        </ul>
+        <p>
+          If additional maintainers join, this table is updated in the same commit that
+          grants them access.
+        </p>
+
+        <h3>Account security</h3>
+        <p>
+          Every person listed above has <strong>two-factor authentication enabled</strong> on
+          their GitHub account. Anyone with write access to the repository is required to
+          have 2FA active.
+        </p>
+
+        <h2>Source and contribution review</h2>
+        <ul>
+          <li>
+            All work lands on <code>main</code> through pull requests. Branch protection on
+            <code>main</code> requires a pull request and passing CI, and
+            <strong>nobody outside the maintainer team can push to it under any
+            circumstances</strong>. Repository administrators retain a bypass for emergency
+            fixes; every use of it is visible in the public commit history.
+          </li>
+          <li>
+            <strong>Every pull request from outside the team requires review and approval by a
+            maintainer before merge.</strong> No external contribution reaches a release
+            without a maintainer having read it, including any dependency it introduces.
+          </li>
+          <li>
+            Maintainer pull requests must pass CI and are reviewed against the same checklist.
+            While the project has a single maintainer, GitHub cannot enforce a second approver
+            on those; once a second maintainer joins, cross-review becomes mandatory and this
+            section is updated.
+          </li>
+          <li>Continuous integration must pass before a pull request can merge.</li>
+          <li>
+            The repository is owned and controlled by the team listed above. We only sign
+            binaries built from this repository's source.
+          </li>
+        </ul>
+
+        <h2>Build and release process</h2>
+        <p>
+          Signed binaries are <strong>only ever produced by CI</strong> — never on a developer
+          machine.
+        </p>
+        <ul>
+          <li>A maintainer bumps the version and merges to <code>main</code>.</li>
+          <li>
+            The release workflow runs on GitHub-hosted runners (Windows, macOS and Linux),
+            checks out the tagged source, and builds the installers with
+            <a href="https://github.com/tauri-apps/tauri-action" rel="noopener"
+              >tauri-action</a
+            >.
+          </li>
+          <li>
+            Windows installers are submitted to SignPath from that same workflow run.
+            SignPath verifies the build originated from this repository and workflow before
+            signing.
+          </li>
+          <li>Signed artifacts are attached to a <strong>draft</strong> GitHub Release.</li>
+          <li>
+            A maintainer verifies the signatures and the auto-update path, then publishes the
+            release.
+          </li>
+        </ul>
+        <p>
+          Because the build inputs are the public source tree and the build runs on ephemeral
+          GitHub runners, anyone can inspect exactly what went into a release.
+        </p>
+
+        <h2>Signing</h2>
+
+        <h3>Windows (Authenticode)</h3>
+        <p>
+          Windows installers are signed with a certificate provided free of charge by the
+          <a href="https://signpath.org/" rel="noopener">SignPath Foundation</a>, using the
+          code signing service of
+          <a href="https://signpath.io/" rel="noopener">SignPath.io</a>.
+        </p>
+        <ul>
+          <li>
+            The signing certificate's private key is held in SignPath's HSM.
+            <strong>No member of this project has access to it</strong>, and it cannot be
+            extracted or used outside SignPath.
+          </li>
+          <li>
+            Signing requests can only be submitted by the release workflow in this repository,
+            under a signing policy that restricts which artifacts may be signed.
+          </li>
+          <li>
+            Signed artifacts: <code>Ortu_&lt;version&gt;_x64-setup.exe</code> (NSIS) and
+            <code>Ortu_&lt;version&gt;_x64_en-US.msi</code>.
+          </li>
+        </ul>
+
+        <h3>macOS and Linux</h3>
+        <p>
+          macOS builds are <strong>not currently notarized</strong> with an Apple Developer
+          account, and Linux packages are not signed. Installation notes for the resulting
+          Gatekeeper warning are in the
+          <a href="https://github.com/abhijith-p-subash/ortu#readme" rel="noopener">README</a>.
+        </p>
+
+        <h3>Update signatures</h3>
+        <p>
+          Separately from Authenticode, every release artifact carries a <code>.sig</code>
+          file — a <a href="https://jedisct1.github.io/minisign/" rel="noopener">minisign</a>
+          signature checked by Ortu's built-in updater against a public key embedded in the
+          app. This prevents an update from being swapped out in transit, on every platform.
+          The corresponding private key is stored as a GitHub Actions secret, is only
+          accessible to the release workflow, and is never present on a developer machine.
+        </p>
+
+        <h2>Verifying a download</h2>
+        <p>On Windows, check the signature before installing:</p>
+        <pre><code>signtool verify /pa /v Ortu_2.0.2_x64-setup.exe</code></pre>
+        <p>
+          Or right-click the installer → <strong>Properties</strong> →
+          <strong>Digital Signatures</strong>. You can also compare the file against the
+          checksums published with each
+          <a href="https://github.com/abhijith-p-subash/ortu/releases" rel="noopener"
+            >GitHub Release</a
+          >.
+        </p>
+        <div class="note">
+          <p>
+            If you find a binary claiming to be Ortu that is signed by anyone else, or an Ortu
+            installer distributed outside GitHub Releases, please
+            <a
+              href="https://github.com/abhijith-p-subash/ortu/blob/main/SECURITY.md"
+              rel="noopener"
+              >report it privately</a
+            >
+            — do not run it.
+          </p>
+        </div>
+
+        <h2>User protections</h2>
+        <ul>
+          <li>
+            <strong>Privacy</strong> — Ortu is local-first. Clipboard history stays on your
+            device; there is no account, no cloud sync, and no telemetry. The only outbound
+            network requests are update checks against GitHub. Full detail in the
+            <a href="/privacy-policy">privacy policy</a>.
+          </li>
+          <li>
+            <strong>System configuration</strong> — Ortu registers global keyboard shortcuts
+            and, if you enable it, a launch-at-login entry. Both are opt-in from Settings.
+          </li>
+          <li>
+            <strong>Uninstallation</strong> — Ortu can be removed through the standard
+            uninstaller for your platform. Removing the app-data directory deletes all stored
+            history.
+          </li>
+          <li>
+            <strong>No hacking or scanning tools</strong> — Ortu is a productivity utility. It
+            does not exploit vulnerabilities and is not a security diagnostic tool.
+          </li>
+        </ul>
+
+        <h2>Credits</h2>
+        <p>
+          Free code signing for Ortu is provided by the
+          <a href="https://signpath.org/" rel="noopener">SignPath Foundation</a>, with a
+          certificate and signing infrastructure from
+          <a href="https://signpath.io/" rel="noopener">SignPath.io</a>. Thank you.
+        </p>
+
+        <h2>Reporting</h2>
+        <p>
+          Security issues: see
+          <a
+            href="https://github.com/abhijith-p-subash/ortu/blob/main/SECURITY.md"
+            rel="noopener"
+            >SECURITY.md</a
+          >. Please report privately — do not open a public issue.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <p style="margin: 0">© 2026 Ortu · Local-first clipboard manager · MIT licensed</p>
+        <div class="flinks">
+          <a href="/">Home</a>
+          <a href="/privacy-policy">Privacy</a>
+          <a href="https://github.com/abhijith-p-subash/ortu" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

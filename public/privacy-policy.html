@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/app-icon.svg" />
+    <title>Privacy Policy — Ortu</title>
+    <meta
+      name="description"
+      content="Ortu is local-first: clipboard history stays on your device. No account, no cloud sync, no telemetry. Here is exactly what is stored and what leaves your machine."
+    />
+    <meta name="theme-color" content="#08090c" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://ortu.abhijithpsubash.com/privacy-policy" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Ortu" />
+    <meta property="og:title" content="Privacy Policy — Ortu" />
+    <meta
+      property="og:description"
+      content="Ortu is local-first: clipboard history stays on your device. No account, no cloud sync, no telemetry."
+    />
+    <meta property="og:url" content="https://ortu.abhijithpsubash.com/privacy-policy" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #08090c;
+        --surface: #13151b;
+        --raised: #1c1f28;
+        --fg: #ffffff;
+        --muted: #a1a1aa;
+        --dim: #71717a;
+        --accent: #ff8a3d;
+        --accent-hover: #ff9a56;
+        --border: #2d3136;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(1200px 600px at 20% -20%, rgba(174, 178, 145, 0.1), transparent),
+          linear-gradient(180deg, #08090c 0%, #0d0f13 100%);
+        background-attachment: fixed;
+        color: var(--muted);
+        font-family: "Manrope", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection {
+        background: rgba(255, 138, 61, 0.2);
+        color: #fff;
+      }
+      .wrap {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+      header.site {
+        border-bottom: 1px solid var(--border);
+        padding: 1.25rem 0;
+      }
+      header.site .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--fg);
+        font-weight: 800;
+        font-size: 1.05rem;
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+      .brand img {
+        width: 26px;
+        height: 26px;
+      }
+      .back {
+        color: var(--dim);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.15s ease;
+      }
+      .back:hover {
+        color: var(--fg);
+      }
+      main {
+        padding: 3rem 0 4rem;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid rgba(255, 138, 61, 0.3);
+        background: rgba(255, 138, 61, 0.07);
+        border-radius: 999px;
+        padding: 0.3rem 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+      h1 {
+        color: var(--fg);
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        font-weight: 800;
+        margin: 0 0 0.75rem;
+      }
+      .lede {
+        font-size: 1.075rem;
+        color: var(--muted);
+        margin: 0 0 0.5rem;
+      }
+      .updated {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+        color: var(--dim);
+        margin-bottom: 2.5rem;
+      }
+      h2 {
+        color: var(--fg);
+        font-size: 1.4rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 3rem 0 1rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid var(--border);
+      }
+      h3 {
+        color: var(--fg);
+        font-size: 1.075rem;
+        font-weight: 700;
+        margin: 2rem 0 0.6rem;
+      }
+      p {
+        margin: 0 0 1rem;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 138, 61, 0.35);
+        transition: color 0.15s ease, border-color 0.15s ease;
+      }
+      a:hover {
+        color: var(--accent-hover);
+        border-bottom-color: var(--accent-hover);
+      }
+      ul {
+        margin: 0 0 1rem;
+        padding-left: 1.25rem;
+      }
+      li {
+        margin-bottom: 0.5rem;
+      }
+      li::marker {
+        color: var(--accent);
+      }
+      strong {
+        color: #e4e4e7;
+        font-weight: 700;
+      }
+      code {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.86em;
+        background: var(--raised);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        padding: 0.12em 0.4em;
+        color: #e4e4e7;
+      }
+      .table-scroll {
+        overflow-x: auto;
+        margin: 0 0 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 460px;
+        font-size: 0.925rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      th {
+        color: var(--fg);
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.02);
+        white-space: nowrap;
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      .note {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 10px 10px 0;
+        padding: 1rem 1.25rem;
+        margin: 0 0 1.5rem;
+      }
+      .note p:last-child {
+        margin-bottom: 0;
+      }
+      .headline {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem 1.75rem;
+        margin: 0 0 2rem;
+      }
+      .headline p {
+        margin: 0;
+        font-size: 1.05rem;
+        color: #e4e4e7;
+      }
+      footer.site {
+        border-top: 1px solid var(--border);
+        padding: 2rem 0 3rem;
+        color: var(--dim);
+        font-size: 0.875rem;
+      }
+      footer.site .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+      footer.site a {
+        color: var(--dim);
+        border-bottom: 0;
+      }
+      footer.site a:hover {
+        color: var(--fg);
+      }
+      .flinks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+      }
+      @media (max-width: 640px) {
+        main {
+          padding: 2rem 0 3rem;
+        }
+        h2 {
+          margin-top: 2.25rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a class="brand" href="/">
+          <img src="/app-icon.svg" alt="" width="26" height="26" />
+          Ortu
+        </a>
+        <a class="back" href="/">← Back to site</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap">
+        <span class="eyebrow">Privacy</span>
+        <h1>Privacy Policy</h1>
+        <p class="lede">
+          Ortu is a clipboard manager, so it necessarily sees everything you copy. This page
+          explains exactly where that data goes — and where it doesn't.
+        </p>
+        <p class="updated">Last updated: 24 July 2026</p>
+
+        <div class="headline">
+          <p>
+            <strong>Ortu does not collect, transmit, or store your data on any server.</strong>
+            There is no account, no cloud sync, and no telemetry or analytics of any kind.
+            Your clipboard history never leaves your device unless you explicitly export it.
+          </p>
+        </div>
+
+        <h2>The application</h2>
+
+        <h3>What Ortu stores, and where</h3>
+        <p>
+          Ortu records the clipboard items you copy — text, images, and file references — in a
+          <strong>local SQLite database</strong> in your operating system's application data
+          directory. This database lives on your machine and is never uploaded anywhere.
+        </p>
+        <p>
+          Alongside it, Ortu stores your settings (shortcuts, retention preferences, snippets)
+          and an encryption key file used for the feature described below.
+        </p>
+
+        <h3>Sensitive items</h3>
+        <p>
+          Ortu's classifier flags items that look like <strong>secrets</strong> — API keys,
+          tokens, SSH keys, JWTs, environment variables. With
+          <strong>Auto-mask detected secrets</strong> enabled (Settings → Privacy), those items
+          are masked in the interface and <strong>encrypted at rest using AES-256-GCM</strong>.
+        </p>
+        <p>
+          Encryption is field-level: only the sensitive values are encrypted, not the whole
+          database. The 256-bit key is generated on first use and stored in a
+          <code>.sensitive_key</code> file with <code>0600</code> permissions in the app-data
+          directory.
+        </p>
+        <div class="note">
+          <p>
+            <strong>What this protects, honestly.</strong> Encryption at rest protects masked
+            secrets from casual inspection of the database file. It does
+            <strong>not</strong> protect against malware or another process running as your own
+            user account — the key sits on the same machine as the data. Non-sensitive history
+            is stored in plaintext by design, so that search and previews work. Backups and
+            text exports are <strong>not</strong> encrypted; treat exported files as sensitive.
+          </p>
+        </div>
+
+        <h3>Network connections</h3>
+        <p>
+          The only outbound network requests Ortu makes are <strong>update checks</strong>
+          against GitHub, which fetch the published release metadata and, if you choose to
+          update, the installer itself. No clipboard content, identifiers, or usage data are
+          included in these requests.
+        </p>
+        <p>
+          The application's Content-Security-Policy restricts outbound connections to local
+          inter-process communication and the GitHub update endpoints, so the app cannot reach
+          anywhere else even if a dependency tried to.
+        </p>
+
+        <h3>System permissions</h3>
+        <ul>
+          <li>
+            <strong>macOS Accessibility</strong> — required for Ortu to paste into other
+            applications, which it does by synthesising a paste keystroke. Ortu prompts you and
+            links to the right settings pane when this is needed.
+          </li>
+          <li>
+            <strong>Global keyboard shortcuts</strong> — registered so you can summon Ortu from
+            any app. All shortcuts are rebindable in Settings.
+          </li>
+          <li>
+            <strong>Launch at login</strong> — off by default, and enabled only if you turn it
+            on.
+          </li>
+        </ul>
+
+        <h3>Controlling what is kept</h3>
+        <ul>
+          <li>
+            <strong>History retention</strong> (Settings → History) — the default
+            <em>On reboot</em> mode clears ungrouped and unpinned items every reboot. You can
+            instead set an age or count limit.
+          </li>
+          <li>
+            <strong>Pause capture</strong> — click the status pill in the header to stop
+            recording entirely, for example while handling sensitive data. Nothing is captured
+            until you resume, and the paused state survives restarts.
+          </li>
+          <li><strong>Delete</strong> any individual item at any time.</li>
+        </ul>
+
+        <h3>Uninstalling and deleting your data</h3>
+        <p>
+          Remove Ortu using the standard uninstaller for your platform — Apps &amp; features on
+          Windows, deleting <code>Ortu.app</code> on macOS, or your package manager on Linux.
+          Deleting the application data directory removes the database, your settings, and the
+          encryption key, which erases all stored history permanently.
+        </p>
+
+        <h2>This website</h2>
+        <p>
+          <strong>ortu.abhijithpsubash.com runs no analytics, no tracking scripts, and sets no
+          cookies.</strong>
+        </p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>What happens</th>
+                <th>Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Requests to <code>api.github.com</code></td>
+                <td>
+                  To display the current version, release date, and star count. Made by your
+                  browser directly to GitHub and subject to
+                  <a href="https://docs.github.com/en/site-policy/privacy-policies" rel="noopener"
+                    >GitHub's privacy policy</a
+                  >.
+                </td>
+              </tr>
+              <tr>
+                <td>Requests to <code>fonts.googleapis.com</code></td>
+                <td>
+                  To load the site's typefaces, subject to
+                  <a href="https://policies.google.com/privacy" rel="noopener"
+                    >Google's privacy policy</a
+                  >.
+                </td>
+              </tr>
+              <tr>
+                <td>Standard server logs</td>
+                <td>
+                  The site is hosted on Netlify, which keeps ordinary access logs (IP address,
+                  user agent, requested page) for delivery and abuse prevention. We do not
+                  analyse or export them.
+                </td>
+              </tr>
+              <tr>
+                <td>Downloads</td>
+                <td>
+                  Installers are served from GitHub Releases. GitHub counts downloads per
+                  release asset; that count is aggregate and contains no personal data.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Third parties</h2>
+        <p>
+          We do not sell, share, or transfer personal data, because we do not collect any. The
+          services above (GitHub, Netlify, Google Fonts) act only as infrastructure and are
+          governed by their own privacy policies.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          Ortu is a general-purpose productivity tool and is not directed at children. Since no
+          personal data is collected, none is collected from children either.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          If this policy changes, the updated version will be published here with a new date,
+          and the change will be recorded in the project's
+          <a
+            href="https://github.com/abhijith-p-subash/ortu/blob/main/CHANGELOG.md"
+            rel="noopener"
+            >changelog</a
+          >. Material changes to what the application does with your data will also be noted in
+          the release notes.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about this policy:
+          <a href="https://github.com/abhijith-p-subash/ortu/issues" rel="noopener"
+            >open an issue</a
+          >. Security vulnerabilities should be reported privately — see
+          <a
+            href="https://github.com/abhijith-p-subash/ortu/blob/main/SECURITY.md"
+            rel="noopener"
+            >SECURITY.md</a
+          >.
+        </p>
+        <p>
+          The technical version of this document lives in the repository at
+          <a
+            href="https://github.com/abhijith-p-subash/ortu/blob/main/docs/PRIVACY_AND_SECURITY.md"
+            rel="noopener"
+            >docs/PRIVACY_AND_SECURITY.md</a
+          >. See also the <a href="/code-signing-policy">code signing policy</a> for how
+          releases are built and verified.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <p style="margin: 0">© 2026 Ortu · Local-first clipboard manager · MIT licensed</p>
+        <div class="flinks">
+          <a href="/">Home</a>
+          <a href="/code-signing-policy">Code signing</a>
+          <a href="https://github.com/abhijith-p-subash/ortu" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
