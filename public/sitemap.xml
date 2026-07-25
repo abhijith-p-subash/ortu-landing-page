@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
   <url>
     <loc>https://ortu.abhijithpsubash.com/</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ortu.abhijithpsubash.com/w1.png</image:loc>
+      <image:title>Ortu clipboard manager interface</image:title>
+      <image:caption>Ortu — free open-source clipboard manager for macOS, Windows and Linux</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ortu.abhijithpsubash.com/mockup.png</image:loc>
+      <image:title>Ortu app mockup</image:title>
+      <image:caption>Ortu clipboard history with search, groups and paste stack</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://ortu.abhijithpsubash.com/privacy-policy</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://ortu.abhijithpsubash.com/code-signing-policy</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>

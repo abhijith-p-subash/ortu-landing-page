@@ -1,0 +1,42 @@
+# Ortu
+
+> Ortu is a free, open-source, local-first clipboard manager for macOS, Windows, and Linux. It remembers everything you copy — text, images, and files — and lets you search and paste it again instantly from the keyboard. All history is stored in a local SQLite database on the user's own device: no account, no cloud sync, and no telemetry.
+
+Ortu is built with Tauri (Rust) and SvelteKit, so it ships as a small native binary rather than a bundled browser. It is aimed at developers and keyboard-first power users who want fast clipboard recall without sending their data to a third-party service. It is a productivity utility, not a security or diagnostic tool.
+
+Key facts:
+- License: MIT (open source, free of charge)
+- Platforms: macOS, Windows, Linux
+- Storage: local SQLite database; local-first, offline, zero telemetry
+- Author: Abhijith P Subash
+- Latest stable version: 2.0.2
+- Official website: https://ortu.abhijithpsubash.com/
+- Source code: https://github.com/abhijith-p-subash/ortu
+- Downloads: https://github.com/abhijith-p-subash/ortu/releases/latest
+
+Core features:
+- Multi-format capture — save text, images, and file references to a searchable local history
+- Paste stack — queue several clips and paste them one by one, in order, into any app
+- Encryption at rest — detected secrets (API keys, tokens, SSH keys, JWTs) are masked and encrypted with AES-256-GCM
+- Instant full-text search — SQLite FTS5 index with type filters and group scoping
+- Smart auto-grouping — a rule-based classifier sorts clips into URLs, code, JSON, secrets, and more
+- Global keyboard shortcuts — summon a quick-paste popup over any app; all hotkeys are rebindable
+- Flexible history retention — clear on reboot, keep forever, or set age/count limits
+- Snippets & transforms — reusable snippets plus "Copy as" transforms (JSON, Base64, URL-encode, case)
+- Cross-platform and lightweight — a single native binary per platform, no bundled browser
+
+## Documentation
+- [Features](https://github.com/abhijith-p-subash/ortu/blob/main/docs/FEATURES.md): Full feature reference
+- [Configuration](https://github.com/abhijith-p-subash/ortu/blob/main/docs/CONFIGURATION.md): Settings, retention modes, storage locations
+- [Keyboard shortcuts](https://github.com/abhijith-p-subash/ortu/blob/main/docs/SHORTCUTS.md): All global and in-app shortcuts
+- [Privacy & Security](https://ortu.abhijithpsubash.com/privacy-policy): What is stored, encryption, and network behavior
+- [Code Signing Policy](https://ortu.abhijithpsubash.com/code-signing-policy): How releases are built, signed, and verified
+- [FAQ](https://github.com/abhijith-p-subash/ortu/blob/main/docs/FAQ.md): Common questions and troubleshooting
+- [Changelog](https://github.com/abhijith-p-subash/ortu/blob/main/CHANGELOG.md): Release history
+
+## Common questions
+- Is Ortu free? Yes — it is MIT licensed and free of charge, with no paid tiers.
+- Does Ortu send my clipboard to the cloud? No. Ortu is local-first; clipboard history never leaves your device, and there is no telemetry. The only network requests are update checks against GitHub.
+- Which platforms are supported? macOS, Windows, and Linux.
+- What are the alternatives Ortu compares to? Ditto, CopyQ, ClipClip, Maccy, and Paste.
+- How do I install it? Download the installer for your OS from GitHub Releases and run it. On Windows, if SmartScreen warns, choose "More info" then "Run anyway". On macOS, if Gatekeeper blocks an unsigned build, follow the quarantine commands shown in the download section.

@@ -95,8 +95,10 @@
             "releaseNotes": "https://github.com/abhijith-p-subash/ortu/blob/main/CHANGELOG.md",
             "image": "https://ortu.abhijithpsubash.com/w1.png",
             "screenshot": "https://ortu.abhijithpsubash.com/w1.png",
-            "softwareVersion": "2.0.0",
-            "dateModified": "2026-06-24",
+            "softwareVersion": "2.0.2",
+            "dateModified": "2026-07-25",
+            "applicationSubCategory": "Clipboard Manager",
+            "installUrl": "https://github.com/abhijith-p-subash/ortu/releases/latest",
             "inLanguage": "en",
             "license": "https://github.com/abhijith-p-subash/ortu/blob/main/LICENSE",
             "isAccessibleForFree": true,
@@ -114,11 +116,20 @@
               "price": "0",
               "priceCurrency": "USD"
             },
-            "author": {
-              "@type": "Person",
-              "name": "Abhijith P Subash"
-            },
-            "publisher": { "@id": "https://ortu.abhijithpsubash.com/#org" }
+            "author": { "@id": "https://ortu.abhijithpsubash.com/#author" },
+            "publisher": { "@id": "https://ortu.abhijithpsubash.com/#org" },
+            "sameAs": [
+              "https://github.com/abhijith-p-subash/ortu",
+              "https://www.producthunt.com/products/ortu",
+              "https://www.directree.io"
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://ortu.abhijithpsubash.com/#author",
+            "name": "Abhijith P Subash",
+            "url": "https://ortu.abhijithpsubash.com/",
+            "sameAs": ["https://github.com/abhijith-p-subash"]
           },
           {
             "@type": "Organization",
@@ -126,8 +137,11 @@
             "name": "Ortu",
             "url": "https://ortu.abhijithpsubash.com/",
             "logo": "https://ortu.abhijithpsubash.com/app-icon.svg",
+            "founder": { "@id": "https://ortu.abhijithpsubash.com/#author" },
             "sameAs": [
               "https://github.com/abhijith-p-subash/ortu",
+              "https://www.producthunt.com/products/ortu",
+              "https://www.directree.io",
               "https://buymeacoffee.com/abhijithpsubash"
             ]
           },
@@ -138,6 +152,38 @@
             "url": "https://ortu.abhijithpsubash.com/",
             "inLanguage": "en",
             "publisher": { "@id": "https://ortu.abhijithpsubash.com/#org" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://ortu.abhijithpsubash.com/#webpage",
+            "url": "https://ortu.abhijithpsubash.com/",
+            "name": "Ortu — Free Open-Source Clipboard Manager for Mac, Windows & Linux",
+            "isPartOf": { "@id": "https://ortu.abhijithpsubash.com/#website" },
+            "about": { "@id": "https://ortu.abhijithpsubash.com/#app" },
+            "primaryImageOfPage": "https://ortu.abhijithpsubash.com/w1.png",
+            "inLanguage": "en",
+            "speakable": {
+              "@type": "SpeakableSpecification",
+              "cssSelector": ["h1", "h2"]
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://ortu.abhijithpsubash.com/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ortu.abhijithpsubash.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Download",
+                "item": "https://ortu.abhijithpsubash.com/#download"
+              }
+            ]
           }
         ]
       }

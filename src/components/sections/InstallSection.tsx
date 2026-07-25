@@ -34,7 +34,7 @@ const InstallSection = () => {
     }
   };
 
-  const installHeading = "MacOS Download";
+  const installHeading = "Download Ortu for macOS, Windows & Linux";
 
   const installDescription =
     os === "windows"
