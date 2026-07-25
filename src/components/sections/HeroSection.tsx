@@ -85,7 +85,7 @@ const HeroSection = () => {
           )}
         </div>
 
-        <div className="flex items-center justify-center mt-6">
+        <div className="flex items-center justify-center flex-wrap gap-4 mt-6">
           <a
             href="https://www.producthunt.com/products/ortu?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-ortu"
             target="_blank"
@@ -98,6 +98,16 @@ const HeroSection = () => {
               loading="lazy"
               className="w-45 h-auto"
               src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1193035&theme=light&t=1783700447816"
+            />
+          </a>
+          <a href="https://www.directree.io" target="_blank" rel="noopener">
+            <img
+              alt="Verified on directree"
+              width="200"
+              height="37"
+              loading="lazy"
+              className="h-auto"
+              src="https://www.directree.io/badge/directree-badge-darkmode.svg"
             />
           </a>
         </div>
