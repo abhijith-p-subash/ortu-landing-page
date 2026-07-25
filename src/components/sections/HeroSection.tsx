@@ -110,6 +110,20 @@ const HeroSection = () => {
               src="https://www.directree.io/badge/directree-badge-darkmode.svg"
             />
           </a>
+          <a
+            href="https://sourceforge.net/p/ortu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              alt="Download Ortu on SourceForge"
+              width="200"
+              height="37"
+              loading="lazy"
+              className="w-[200px] h-auto"
+              src="https://sourceforge.net/sflogo.php?type=18&group_id=4118282"
+            />
+          </a>
         </div>
 
         <motion.div
