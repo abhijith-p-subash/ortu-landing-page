@@ -32,6 +32,27 @@ const DonationSection = () => (
           <Coffee className="w-5 h-5" />
           Buy me a coffee
         </motion.a>
+
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <p className="text-xs uppercase tracking-widest text-zinc-500 font-bold">
+            Or support it for free
+          </p>
+          <a
+            href="https://www.producthunt.com/products/ortu?utm_source=badge-follow&utm_medium=badge&utm_source=badge-ortu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opacity-80 hover:opacity-100 transition-opacity"
+          >
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1266640&theme=light"
+              alt="Ortu - The clipboard manager for people who copy-paste for a living | Product Hunt"
+              width="200"
+              height="43"
+              loading="lazy"
+              className="w-[200px] h-[43px]"
+            />
+          </a>
+        </div>
       </motion.div>
     </div>
   </section>

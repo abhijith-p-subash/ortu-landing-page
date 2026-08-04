@@ -1,10 +1,32 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Github, Loader2 } from "lucide-react";
+import { ArrowDown, Download, Github, Loader2, TerminalSquare } from "lucide-react";
 import { useDownload } from "../../hooks/useDownload";
+import StatsTerminal from "../ui/StatsTerminal";
+
+// Only surface the counter once it reads as social proof rather than as a
+// warning sign. Below this the hero simply stays quiet about it.
+const DOWNLOAD_THRESHOLD = 100;
+
+/** 597 -> "597", 1890 -> "1.8k", 12400 -> "12k". */
+const formatDownloads = (count: number) => {
+  if (count < 1000) return String(count);
+  const thousands = count / 1000;
+  return `${thousands < 10 ? thousands.toFixed(1) : Math.floor(thousands)}k`;
+};
 
 const HeroSection = () => {
-  const { downloadUrl, version, os, isLoading, totalDownloads, onDownloadClick } =
-    useDownload();
+  const {
+    downloadUrl,
+    version,
+    os,
+    isLoading,
+    totalDownloads,
+    stats,
+    refresh,
+    onDownloadClick
+  } = useDownload();
+  const [statsOpen, setStatsOpen] = useState(false);
   const repoUrl = `https://github.com/${import.meta.env.VITE_GITHUB_REPO}`;
 
   const getButtonText = () => {
@@ -85,70 +107,49 @@ const HeroSection = () => {
           )}
         </div>
 
-        <div className="flex items-center justify-center flex-wrap gap-4 mt-6">
-          <a
-            href="https://www.producthunt.com/products/ortu?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-ortu"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              alt="Ortu - The clipboard manager for people who copy-paste for a living | Product Hunt"
-              width="180"
-              height="39"
-              loading="lazy"
-              className="w-45 h-auto"
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1193035&theme=light&t=1783700447816"
-            />
-          </a>
-          <a href="https://www.directree.io" target="_blank" rel="noopener">
-            <img
-              alt="Verified on directree"
-              width="200"
-              height="37"
-              loading="lazy"
-              className="h-auto"
-              src="https://www.directree.io/badge/directree-badge-darkmode.svg"
-            />
-          </a>
-          <a
-            href="https://sourceforge.net/p/ortu/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              alt="Download Ortu on SourceForge"
-              width="200"
-              height="37"
-              loading="lazy"
-              className="w-[200px] h-auto"
-              src="https://sourceforge.net/sflogo.php?type=18&group_id=4118282"
-            />
-          </a>
-        </div>
-
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           className="flex flex-col items-center gap-2 my-8"
         >
-          {!isLoading &&
-            new URLSearchParams(window.location.search).get("stats") === "true" && (
-              <div className="flex items-center gap-2 text-zinc-400 text-sm">
-                <span className="flex h-2 w-2 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sage"></span>
-                </span>
-                <span className="font-medium text-zinc-300">
-                  {totalDownloads}+ Downloads
-                </span>
-              </div>
-            )}
+          {!isLoading && totalDownloads >= DOWNLOAD_THRESHOLD && (
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => setStatsOpen(true)}
+              aria-haspopup="dialog"
+              className="group flex items-center gap-2.5 px-4 py-2 rounded-full border border-border bg-surface/60 text-sm text-zinc-400 hover:text-zinc-200 hover:border-sage/40 transition-colors"
+            >
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-sage"></span>
+              </span>
+              <span className="font-medium text-zinc-200">
+                {formatDownloads(totalDownloads)}+ installs
+              </span>
+              <span className="hidden sm:inline text-zinc-600">and counting</span>
+              <span className="flex items-center gap-1.5 pl-2.5 border-l border-border text-[11px] font-mono uppercase tracking-widest text-zinc-500 group-hover:text-sage transition-colors">
+                <TerminalSquare className="w-3.5 h-3.5" />
+                stats
+              </span>
+            </motion.button>
+          )}
         </motion.div>
       </motion.div>
 
       <div className="absolute -top-24 -right-24 w-72 h-72 bg-sage/15 blur-3xl rounded-full pointer-events-none" />
       <div className="absolute -bottom-14 left-0 right-0 h-72 bg-gradient-to-t from-bg via-bg/70 to-transparent pointer-events-none" />
+
+      <StatsTerminal
+        open={statsOpen}
+        onClose={() => setStatsOpen(false)}
+        stats={stats}
+        version={version}
+        releasesUrl={`${repoUrl}/releases`}
+        refresh={refresh}
+      />
     </section>
   );
 };
