@@ -7,12 +7,15 @@ import { useDownload } from "../../hooks/useDownload";
 // Below this, the pill stays a plain "Star on GitHub" call to action.
 const STAR_THRESHOLD = 100;
 
+// Root-relative rather than bare fragments, so the nav still works from the
+// platform pages. On the homepage the browser treats "/#why" as a same-document
+// jump, so smooth scrolling is unaffected.
 const links = [
-  { href: "#different", label: "Why Ortu" },
-  { href: "#why", label: "Features" },
-  { href: "#shortcuts", label: "Shortcuts" },
-  { href: "#compare", label: "Compare" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#different", label: "Why Ortu" },
+  { href: "/#why", label: "Features" },
+  { href: "/#shortcuts", label: "Shortcuts" },
+  { href: "/#compare", label: "Compare" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 const Navbar = () => {
@@ -22,7 +25,7 @@ const Navbar = () => {
   return (
     <nav aria-label="Primary" className="fixed top-5 w-full z-50 px-4">
       <div className="max-w-5xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex justify-between items-center shadow-2xl shadow-black/40">
-        <a href="#top" className="flex items-center gap-2.5">
+        <a href="/" className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg flex items-center justify-center">
             <img
               className="w-full h-full object-contain"

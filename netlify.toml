@@ -8,7 +8,6 @@
   NPM_FLAGS = "--legacy-peer-deps"
 
 # Clean URLs for the static policy pages in public/.
-# These must come before the SPA catch-all — first match wins.
 [[redirects]]
   from = "/code-signing-policy"
   to = "/code-signing-policy.html"
@@ -19,7 +18,8 @@
   to = "/privacy-policy.html"
   status = 200
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# No SPA catch-all. This site has no client-side router — it is a prerendered
+# single page plus two static policy pages — so a `/* -> /index.html 200` rule
+# only served the homepage under every made-up URL. Search engines read that as a
+# soft 404: it wastes crawl budget and can hold back indexing of the real pages.
+# Without the rule, Netlify serves public/404.html with a genuine 404 status.
