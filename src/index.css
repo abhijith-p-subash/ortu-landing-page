@@ -87,3 +87,47 @@
   border: 2px solid transparent;
   background-clip: content-box;
 }
+
+/* ── Buy Me a Coffee button ──────────────────────────────────────────────
+   The official widget script only renders through document.writeln(), which
+   is a no-op once the page has parsed — so it cannot be injected at runtime
+   on a prerendered React page. These styles are its own output, lifted
+   verbatim so the button stays pixel-identical to the hosted one, minus the
+   third-party request. Colours match the configured data-* attributes.
+   (Upstream leaves `font-family: [FONT]` unsubstituted on .bmc-btn-text
+   because their replace() only swaps the first match; fixed here.) */
+.bmc-btn {
+  min-width: 210px;
+  height: 60px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 12px;
+  color: #000000 !important;
+  background-color: #ffdd00 !important;
+  font-family: "Cookie", cursive !important;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 27px;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  box-sizing: border-box !important;
+}
+
+.bmc-btn:hover,
+.bmc-btn:active,
+.bmc-btn:focus {
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.bmc-btn-text {
+  margin-left: 8px;
+  width: 100%;
+  flex-shrink: 0;
+  display: inline-block;
+  text-align: left;
+  line-height: 0;
+  white-space: nowrap;
+  font-family: "Cookie", cursive !important;
+}

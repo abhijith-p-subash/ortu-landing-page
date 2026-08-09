@@ -55,23 +55,41 @@ const Navbar = () => {
 
         <div className="flex items-center gap-2">
           <a
+            href="https://buymeacoffee.com/abhijithpsubash"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Buy me a coffee"
+            aria-label="Support Ortu on Buy Me a Coffee"
+            className="inline-flex shrink-0 items-center justify-center rounded-full transition-transform duration-200 hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            <img
+              src="/bmc-coffee.webp"
+              alt=""
+              width={32}
+              height={32}
+              loading="lazy"
+              decoding="async"
+              className="h-8 w-8 rounded-full"
+            />
+          </a>
+          <a
             href="https://github.com/abhijith-p-subash/ortu"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-border text-zinc-300 hover:text-white hover:border-accent/40 transition-colors text-xs font-bold"
+            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border text-zinc-400 hover:text-white hover:border-accent/40 transition-colors text-[11px] font-bold"
             aria-label="Star Ortu on GitHub"
           >
             {stars >= STAR_THRESHOLD ? (
               <>
-                <Github className="w-3.5 h-3.5" />
+                <Github className="w-3 h-3" />
                 <span className="flex items-center gap-1">
-                  <Star className="w-3 h-3 text-accent fill-accent" /> {stars}
+                  <Star className="w-2.5 h-2.5 text-accent fill-accent" /> {stars}
                 </span>
               </>
             ) : (
               <>
-                <Star className="w-3.5 h-3.5" />
-                Star on GitHub
+                <Star className="w-3 h-3" />
+                Star
               </>
             )}
           </a>

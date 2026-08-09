@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Github, Loader2, TerminalSquare } from "lucide-react";
+import { ArrowDown, Download, Github, Loader2, Star, TerminalSquare } from "lucide-react";
 import { useDownload } from "../../hooks/useDownload";
 import StatsTerminal from "../ui/StatsTerminal";
 
@@ -93,6 +93,29 @@ const HeroSection = () => {
             <ArrowDown className="w-4 h-4" />
           </a>
         </div>
+
+        {/* Star nudge.
+            Deliberately placed under the buttons rather than made a button of
+            its own: the download is the primary action and shouldn't have to
+            share weight. The wording does the work — it states what the reader
+            gets for free first (reciprocity), then gives an actual reason for
+            the ask rather than just asking (people comply far more readily when
+            a request carries a "because"), and names the cost so it reads as
+            trivial. No star count: at this stage the number would argue against
+            us, which is why the navbar pill hides it too. */}
+        <p className="mt-1 mb-8 text-sm text-zinc-500 px-4">
+          Free forever, no account, no telemetry. If Ortu earns a place in your setup,{' '}
+          <a
+            href={repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 font-semibold text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent/50"
+          >
+            <Star className="h-3.5 w-3.5" aria-hidden="true" />
+            star it on GitHub
+          </a>{' '}
+          — it takes a second, and it&rsquo;s how other developers find it.
+        </p>
 
         <div className="flex items-center justify-center flex-wrap gap-2 mt-2">
           {["macOS + Windows + Linux", "Local SQLite", "No Cloud Sync", "Option + V"].map(

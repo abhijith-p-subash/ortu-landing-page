@@ -1,5 +1,6 @@
 import { Coffee } from 'lucide-react';
 import { motion } from 'framer-motion';
+import BuyMeACoffeeButton from '../ui/BuyMeACoffeeButton';
 
 const DonationSection = () => (
   <section id="donate" className="py-32 px-4 relative content-auto">
@@ -21,17 +22,7 @@ const DonationSection = () => (
           Ortu is free and open source. If it makes your digital life better, consider fueling the development with a coffee.
         </p>
         
-        <motion.a 
-          whileHover={{ scale: 1.02, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          href="https://buymeacoffee.com/abhijithpsubash" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="inline-flex items-center gap-3 px-8 py-4 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold text-sm uppercase tracking-widest transition-all duration-300 shadow-lg shadow-accent/30"
-        >
-          <Coffee className="w-5 h-5" />
-          Buy me a coffee
-        </motion.a>
+        <BuyMeACoffeeButton />
 
         <div className="mt-10 flex flex-col items-center gap-3">
           <p className="text-xs uppercase tracking-widest text-zinc-500 font-bold">
