@@ -65,10 +65,11 @@ const platformRoutes: RouteDef[] = platforms.map((p) => {
     path,
     element: <PlatformPage content={p} />,
     title,
+    // Bing flags meta descriptions over 160 chars; the longest OS name ("Windows")
+    // lands this at 156, so keep any edit within that budget.
     description:
-      `Ortu is a free, open-source clipboard manager for ${p.os}. Local-first history of text, ` +
-      `images and files with instant search, a paste stack and encryption — no cloud, no telemetry. ` +
-      `Install steps and ${p.os} shortcuts.`,
+      `Free, open-source clipboard manager for ${p.os}. Local-first history of text, images ` +
+      `and files, instant search, paste stack and encryption — zero telemetry.`,
     jsonLd: pageGraph(path, title, p.faqs),
   };
 });
@@ -85,7 +86,7 @@ export const routes: RouteDef[] = [
     title: openSourceTitle,
     description:
       'Ortu is a free, MIT-licensed, open-source clipboard manager for macOS, Windows and Linux. ' +
-      'No paid tier, no account, no telemetry — and a public source tree and build pipeline you can audit.',
+      'No paid tier, no account, no telemetry — an auditable source tree.',
     jsonLd: pageGraph(openSourcePath, openSourceTitle, openSourceFaqs),
   },
 ];
