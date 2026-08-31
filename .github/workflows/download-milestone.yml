@@ -1,0 +1,63 @@
+# Pushes a notification to your phone each time Ortu's all-time download total
+# crosses a new multiple of 10.
+#
+# State (the last milestone announced) lives in the Actions cache rather than a
+# committed file, so this never adds commits to main, never triggers a Netlify
+# rebuild, and never leaves your local clone behind origin. If the cache is
+# evicted the script re-seeds silently — the cost of a lost cache is one missed
+# notification, not a burst of duplicates.
+name: Download milestone
+
+on:
+  schedule:
+    # Every 30 minutes. GitHub treats scheduled runs as best-effort and delays
+    # them under load, so treat this as "roughly half-hourly", not a guarantee.
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: 'Send a test notification instead of checking milestones'
+        type: boolean
+        default: false
+
+# Two overlapping runs could both see the same old milestone and double-notify.
+concurrency:
+  group: download-milestone
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # The cache API has no "update in place", so each run writes a new key and
+      # the prefix restore-key picks up the most recent previous one.
+      - name: Restore last milestone
+        uses: actions/cache/restore@v4
+        with:
+          path: .milestone-state
+          key: ortu-milestone-${{ github.run_id }}
+          restore-keys: ortu-milestone-
+
+      - name: Check downloads
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          ORTU_REPO: abhijith-p-subash/ortu
+          MILESTONE_STEP: '10'
+          SEND_TEST: ${{ inputs.send_test }}
+        run: node .github/scripts/check-downloads.mjs
+
+      - name: Save last milestone
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: .milestone-state
+          key: ortu-milestone-${{ github.run_id }}
