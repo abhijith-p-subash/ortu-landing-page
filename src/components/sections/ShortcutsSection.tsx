@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { RotateCcw } from "lucide-react";
 import Eyebrow from "../ui/Eyebrow";
 import Kbd from "../ui/Kbd";
 
@@ -38,14 +37,14 @@ const ShortcutsSection = () => {
             restore-to-defaults.
           </p>
 
-          <div className="mt-7 inline-flex items-center rounded-xl border border-border bg-surface p-1">
+          <div className="mt-7 inline-flex items-center rounded-xl border border-white/[0.07] bg-gradient-to-b from-white/[0.05] to-black/20 p-1 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
             <button
               type="button"
               onClick={() => setPlatform("mac")}
               aria-pressed={platform === "mac"}
               className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors ${
                 platform === "mac"
-                  ? "bg-accent text-bg"
+                  ? "bg-accent text-bg shadow-[0_6px_16px_-6px_rgba(255,138,61,0.7)]"
                   : "text-zinc-400 hover:text-white"
               }`}
             >
@@ -57,7 +56,7 @@ const ShortcutsSection = () => {
               aria-pressed={platform === "win"}
               className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors ${
                 platform === "win"
-                  ? "bg-accent text-bg"
+                  ? "bg-accent text-bg shadow-[0_6px_16px_-6px_rgba(255,138,61,0.7)]"
                   : "text-zinc-400 hover:text-white"
               }`}
             >
@@ -65,10 +64,6 @@ const ShortcutsSection = () => {
             </button>
           </div>
 
-          <p className="mt-5 inline-flex items-center gap-2 text-xs text-zinc-500">
-            <RotateCcw className="w-3.5 h-3.5 text-sage" /> Fully rebindable ·
-            restore defaults anytime
-          </p>
         </div>
 
         <div className="panel rounded-2xl divide-y divide-border overflow-hidden">
@@ -81,9 +76,9 @@ const ShortcutsSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.04 }}
-                className="flex items-center justify-between gap-4 px-5 py-4 hover:bg-white/[0.02] transition-colors"
+                className="group flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-white/[0.025]"
               >
-                <span className="text-sm font-medium text-zinc-200">
+                <span className="text-sm font-medium text-zinc-200 transition-colors group-hover:text-white">
                   {s.action}
                 </span>
                 <span className="flex items-center gap-1.5 shrink-0">

@@ -162,7 +162,7 @@ const FeaturesSection = () => {
               <motion.div
                 key={feature.title}
                 variants={itemVariants}
-                className={`panel rounded-2xl p-6 flex flex-col justify-between group transition-colors ${hoverBorder} ${feature.span ?? ""}`}
+                className={`panel lift rounded-2xl p-6 flex flex-col justify-between group ${hoverBorder} ${feature.span ?? ""}`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="space-y-2">
@@ -173,7 +173,13 @@ const FeaturesSection = () => {
                       {feature.description}
                     </p>
                   </div>
-                  <div className="shrink-0 p-2.5 bg-bg rounded-xl border border-border">
+                  <div
+                    className={`shrink-0 p-2.5 rounded-xl border border-white/[0.06] bg-gradient-to-b from-white/[0.05] to-transparent shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-colors duration-500 ${
+                      feature.accent === "sage"
+                        ? "group-hover:border-sage/35"
+                        : "group-hover:border-accent/35"
+                    }`}
+                  >
                     <Icon className={`w-5 h-5 ${accentClass}`} aria-hidden="true" />
                   </div>
                 </div>
@@ -183,7 +189,7 @@ const FeaturesSection = () => {
                     {feature.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="bg-bg/70 text-xs px-3 py-1.5 rounded-md border border-border text-zinc-300"
+                        className="text-xs px-3 py-1.5 rounded-md border border-white/[0.06] bg-black/25 text-zinc-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]"
                       >
                         {tag}
                       </span>

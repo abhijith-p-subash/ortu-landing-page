@@ -44,8 +44,147 @@
 }
 
 @layer utilities {
+  /* ── Material system ───────────────────────────────────────────────────
+     Ortu is a small native binary; the site should feel like one object
+     rather than a stack of flat rectangles. Every surface below is built
+     the same way: a vertical gradient body (never a flat fill), a 1px inner
+     top highlight standing in for light falling on an edge, and an ambient
+     shadow that is large, soft and very dark rather than tight and grey. */
+
   .glass {
-    @apply bg-secondary/85 border border-border backdrop-blur-sm;
+    background: linear-gradient(
+      180deg,
+      rgba(28, 31, 40, 0.78),
+      rgba(19, 21, 27, 0.9)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+      0 24px 48px -20px rgba(0, 0, 0, 0.7);
+  }
+
+  .panel {
+    background: linear-gradient(180deg, #1d212a 0%, #15181f 100%);
+    border: 1px solid #262a33;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.045),
+      0 18px 40px -26px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Fine film grain. Does real work beyond taste: the hero's large radial
+     gradients band badly on 8-bit displays, and a little noise breaks the
+     bands up while giving flat darks something to catch. */
+  .grain {
+    position: relative;
+  }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* A 1px gradient edge, drawn as a masked ring so it works on any radius.
+     Used sparingly — the detected-OS card, the primary surfaces — because it
+     reads as "this one matters" and stops meaning that if everything has it. */
+  .edge-accent {
+    position: relative;
+  }
+
+  .edge-accent::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      140deg,
+      rgba(255, 138, 61, 0.55),
+      rgba(255, 255, 255, 0.05) 45%,
+      rgba(174, 178, 145, 0.38)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+
+  /* Cards rise toward the pointer and their edge catches the accent. */
+  .lift {
+    transition:
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.45s ease,
+      box-shadow 0.45s ease;
+  }
+
+  .lift:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+      0 34px 60px -30px rgba(0, 0, 0, 1);
+  }
+
+  /* Specular sweep across the primary button on hover. One pass, not a loop —
+     a looping shine reads as an advert, a single pass reads as a material. */
+  .sheen {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .sheen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    z-index: 1;
+    pointer-events: none;
+    transform: translateX(-180%) skewX(-18deg);
+    background: linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.38),
+      transparent
+    );
+  }
+
+  .sheen:hover::after {
+    animation: ortu-sheen 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes ortu-sheen {
+    to {
+      transform: translateX(280%) skewX(-18deg);
+    }
+  }
+
+  /* Slow-drifting light behind the hero. 28s and 6% of travel: enough that the
+     page is never quite static, slow enough that you cannot catch it moving. */
+  .mesh {
+    background:
+      radial-gradient(58% 55% at 16% 4%, rgba(174, 178, 145, 0.14), transparent 70%),
+      radial-gradient(52% 48% at 84% 16%, rgba(255, 138, 61, 0.15), transparent 70%),
+      radial-gradient(70% 55% at 50% 102%, rgba(255, 138, 61, 0.07), transparent 70%);
+    animation: ortu-drift 28s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  @keyframes ortu-drift {
+    to {
+      transform: translate3d(0, -2.5%, 0) scale(1.06);
+    }
   }
 
   .glow-text {
@@ -56,19 +195,48 @@
     box-shadow: 0 0 40px -10px rgba(255, 138, 61, 0.25);
   }
 
-  .panel {
-    @apply bg-raised border border-border;
-  }
-
   .content-auto {
     content-visibility: auto;
     contain-intrinsic-size: 1px 900px;
   }
 
-  /* Keycap for keyboard-first shortcuts */
+  /* Keycap for keyboard-first shortcuts. The 2px bottom shadow is the key's
+     travel, so hovering the row presses it: the cap drops by exactly that
+     amount and the shadow goes with it. */
   .keycap {
-    @apply inline-flex items-center justify-center font-mono text-zinc-100 bg-raised border border-border rounded-md;
-    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+    @apply inline-flex items-center justify-center font-mono text-zinc-100 border border-border rounded-md;
+    background: linear-gradient(180deg, #232733 0%, #1a1d25 100%);
+    box-shadow:
+      0 2px 0 0 rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.055);
+    transition:
+      transform 0.14s ease,
+      box-shadow 0.14s ease,
+      border-color 0.2s ease;
+  }
+
+  .group:hover .keycap {
+    transform: translateY(2px);
+    box-shadow:
+      0 0 0 0 rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 138, 61, 0.35);
+  }
+}
+
+/* Decoration stands down; layout and colour do not. */
+@media (prefers-reduced-motion: reduce) {
+  .mesh {
+    animation: none;
+  }
+
+  .sheen:hover::after {
+    animation: none;
+  }
+
+  .lift:hover,
+  .group:hover .keycap {
+    transform: none;
   }
 }
 

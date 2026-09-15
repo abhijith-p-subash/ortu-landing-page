@@ -41,9 +41,20 @@ const FaqSection = () => {
         </p>
         <div className="space-y-3">
           {faqs.map((item) => (
-            <details key={item.question} className="panel rounded-xl p-5 group">
-              <summary className="cursor-pointer list-none font-semibold text-white pr-4">
-                {item.question}
+            <details
+              key={item.question}
+              className="panel lift rounded-xl p-5 group transition-colors open:border-accent/25 hover:border-zinc-600"
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-white">
+                <span>{item.question}</span>
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 text-zinc-500 transition-all duration-300 group-open:rotate-45 group-open:text-accent"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                </span>
               </summary>
               <p className="text-zinc-400 text-sm mt-3 leading-relaxed">{item.answer}</p>
             </details>

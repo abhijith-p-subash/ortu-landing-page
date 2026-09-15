@@ -38,14 +38,15 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 overflow-hidden">
+    <section data-bird-zone="hero" className="grain relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 overflow-hidden">
+      <div className="mesh pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="text-center z-10 w-full max-w-5xl mx-auto"
       >
-        <h1 className="text-[20vw] md:text-[10rem] leading-none font-black tracking-tighter text-white/55 select-none">
+        <h1 className="text-[20vw] md:text-[10rem] leading-none font-black tracking-tighter select-none bg-gradient-to-b from-white/75 via-white/45 to-white/[0.07] bg-clip-text text-transparent">
           <span aria-hidden="true">ORTU</span>
           <span className="sr-only">
             Ortu — free open-source clipboard manager for macOS, Windows and Linux
@@ -62,35 +63,42 @@ const HeroSection = () => {
           </span>
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-5 mt-10 w-full px-4 mb-6">
-          <a
-            href={downloadUrl}
-            rel="noopener noreferrer"
-            onClick={onDownloadClick}
-            className="w-full sm:w-auto px-8 py-4 bg-accent text-bg rounded-xl font-bold uppercase tracking-widest hover:bg-accent-hover transition-all flex items-center justify-center gap-3 text-sm min-w-[240px] shadow-lg shadow-accent/25"
-          >
-            {isLoading ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
-            ) : (
-              <Download className="w-4 h-4" />
-            )}
-            {getButtonText()}
-          </a>
-          <a
-            href={repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-4 bg-surface border border-border text-white rounded-xl font-bold uppercase tracking-widest hover:bg-raised transition-all flex items-center justify-center gap-3 text-sm"
-          >
-            <Github className="w-4 h-4" />
-            Source Code
-          </a>
+        <div className="flex flex-col items-center gap-5 mt-10 w-full px-4 mb-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+            <a
+              href={downloadUrl}
+              rel="noopener noreferrer"
+              onClick={onDownloadClick}
+              data-bird-perch="primary"
+              className="sheen w-full sm:w-auto px-8 py-4 bg-accent text-bg rounded-xl font-bold uppercase tracking-widest hover:bg-accent-hover transition-colors flex items-center justify-center gap-3 text-sm min-w-[240px] shadow-[0_22px_48px_-14px_rgba(255,138,61,0.55)]"
+            >
+              {isLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Download className="w-4 h-4" />
+              )}
+              {getButtonText()}
+            </a>
+            <a
+              href={repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass w-full sm:w-auto px-8 py-4 text-white rounded-xl font-bold uppercase tracking-widest hover:border-white/15 transition-colors flex items-center justify-center gap-3 text-sm"
+            >
+              <Github className="w-4 h-4" />
+              Source Code
+            </a>
+          </div>
+
+          {/* Kept, but no longer a peer of Download — pointing at install
+              friction before anyone has committed argued against the button
+              right next to it. */}
           <a
             href="#download"
-            className="w-full sm:w-auto px-6 py-4 bg-sage/15 border border-sage/40 text-sage rounded-xl font-bold uppercase tracking-widest hover:bg-sage/20 transition-all flex items-center justify-center gap-2 text-sm"
+            className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-sage/80 hover:text-sage transition-colors"
           >
-            Install Steps
-            <ArrowDown className="w-4 h-4" />
+            Install steps
+            <ArrowDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
           </a>
         </div>
 
@@ -122,7 +130,7 @@ const HeroSection = () => {
             (tag) => (
               <span
                 key={tag}
-                className="px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-zinc-300 rounded-full bg-raised/70 border border-border"
+                className="px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-zinc-300 rounded-full border border-white/[0.07] bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]"
               >
                 {tag}
               </span>
@@ -143,7 +151,7 @@ const HeroSection = () => {
               whileTap={{ scale: 0.97 }}
               onClick={() => setStatsOpen(true)}
               aria-haspopup="dialog"
-              className="group flex items-center gap-2.5 px-4 py-2 rounded-full border border-border bg-surface/60 text-sm text-zinc-400 hover:text-zinc-200 hover:border-sage/40 transition-colors"
+              className="glass group flex items-center gap-2.5 px-4 py-2 rounded-full text-sm text-zinc-400 hover:text-zinc-200 hover:border-sage/40 transition-colors"
             >
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75"></span>
@@ -162,7 +170,7 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      <div className="absolute -top-24 -right-24 w-72 h-72 bg-sage/15 blur-3xl rounded-full pointer-events-none" />
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-sage/[0.18] blur-[110px] rounded-full pointer-events-none" aria-hidden="true" />
       <div className="absolute -bottom-14 left-0 right-0 h-72 bg-gradient-to-t from-bg via-bg/70 to-transparent pointer-events-none" />
 
       <StatsTerminal

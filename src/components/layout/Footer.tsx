@@ -21,7 +21,12 @@ const platformLinks = [
 ];
 
 const Footer = () => (
-  <footer className="py-12 px-4 border-t border-border">
+  <footer className="relative py-12 px-4 border-t border-border">
+    {/* the seam catches a little light in the middle, like a machined edge */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"
+    />
     <nav
       aria-label="Ortu by platform"
       className="max-w-5xl mx-auto mb-10 flex flex-wrap justify-center gap-x-6 gap-y-3 md:justify-start"

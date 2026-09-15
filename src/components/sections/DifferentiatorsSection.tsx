@@ -72,7 +72,7 @@ const DifferentiatorsSection = () => {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.06 } },
           }}
-          className="mt-12 grid gap-px bg-border rounded-2xl overflow-hidden border border-border sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid gap-px rounded-2xl overflow-hidden border border-border bg-border shadow-[0_30px_70px_-40px_rgba(0,0,0,1)] sm:grid-cols-2 lg:grid-cols-3"
         >
           {diffs.map((d) => {
             const Icon = d.icon;
@@ -83,13 +83,20 @@ const DifferentiatorsSection = () => {
                   hidden: { opacity: 0, y: 16 },
                   visible: { opacity: 1, y: 0 },
                 }}
-                className="bg-bg p-7"
+                className="group relative bg-bg p-7 transition-colors duration-500 hover:bg-white/[0.022]"
               >
-                <Icon className="w-6 h-6 text-accent" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white leading-snug">
+                {/* a warm wash rises into the cell under the pointer */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-accent/[0.07] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                />
+                <span className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.07] bg-gradient-to-b from-white/[0.06] to-white/[0.015] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] transition-colors duration-500 group-hover:border-accent/30">
+                  <Icon className="w-5 h-5 text-accent" aria-hidden="true" />
+                </span>
+                <h3 className="relative mt-4 text-lg font-bold text-white leading-snug">
                   {d.title}
                 </h3>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                <p className="relative mt-2 text-sm text-zinc-400 leading-relaxed">
                   {d.body}
                 </p>
               </motion.article>

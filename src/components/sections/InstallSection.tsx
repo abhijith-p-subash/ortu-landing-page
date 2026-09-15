@@ -47,7 +47,7 @@ const InstallSection = () => {
     <>
       {showMandatoryModal && (
         <div className="fixed inset-0 z-[100] bg-black/75 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="w-full max-w-2xl panel rounded-2xl border-accent/40 shadow-2xl shadow-black/60 p-6 md:p-8">
+          <div className="edge-accent w-full max-w-2xl panel rounded-2xl p-6 md:p-8 shadow-[0_50px_100px_-30px_rgba(0,0,0,1)]">
             <p className="text-[11px] uppercase tracking-[0.2em] font-bold text-accent mb-3">
               Important for macOS
             </p>
@@ -59,7 +59,7 @@ const InstallSection = () => {
               allows it to launch.
             </p>
 
-            <pre className="mt-5 bg-bg border border-border rounded-xl p-4 overflow-x-auto text-sm text-zinc-200 font-mono leading-7">
+            <pre className="mt-5 rounded-xl border border-black/50 bg-[#06070a] p-4 overflow-x-auto text-sm text-zinc-200 font-mono leading-7 shadow-[inset_0_2px_12px_0_rgba(0,0,0,0.8)]">
               <code>{INSTALL_COMMANDS}</code>
             </pre>
 
@@ -67,7 +67,7 @@ const InstallSection = () => {
               <button
                 type="button"
                 onClick={copyCommands}
-                className="inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-lg border border-border bg-surface hover:bg-raised transition-colors"
+                className="inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-lg border border-white/[0.07] bg-gradient-to-b from-white/[0.06] to-white/[0.01] hover:border-zinc-600 transition-colors shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]"
               >
                 {copied ? (
                   <Check className="w-4 h-4 text-sage" />
@@ -79,7 +79,7 @@ const InstallSection = () => {
               <button
                 type="button"
                 onClick={() => setShowMandatoryModal(false)}
-                className="inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-lg bg-accent text-white hover:bg-accent-hover transition-colors"
+                className="sheen inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-lg bg-accent text-bg hover:bg-accent-hover transition-colors shadow-[0_12px_28px_-10px_rgba(255,138,61,0.6)]"
               >
                 I understand
               </button>
@@ -118,7 +118,7 @@ const InstallSection = () => {
               <button
                 type="button"
                 onClick={copyCommands}
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg border border-border bg-surface hover:bg-raised transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg border border-white/[0.07] bg-gradient-to-b from-white/[0.06] to-white/[0.01] hover:border-zinc-600 transition-colors shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]"
               >
                 {copied ? (
                   <Check className="w-4 h-4 text-sage" />
@@ -129,7 +129,7 @@ const InstallSection = () => {
               </button>
             </div>
 
-            <pre className="bg-bg border border-border rounded-xl p-4 overflow-x-auto text-sm text-zinc-200 font-mono leading-7">
+            <pre className="rounded-xl border border-black/50 bg-[#06070a] p-4 overflow-x-auto text-sm text-zinc-200 font-mono leading-7 shadow-[inset_0_2px_12px_0_rgba(0,0,0,0.8)]">
               <code>{INSTALL_COMMANDS}</code>
             </pre>
 
@@ -143,7 +143,7 @@ const InstallSection = () => {
           </div>
 
           <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <div className="panel rounded-2xl p-5">
+            <div className="panel lift rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-2 text-zinc-200">
                 <ShieldAlert className="w-4 h-4 text-sage shrink-0" />
                 <span className="text-sm font-bold uppercase tracking-wider">
@@ -159,7 +159,7 @@ const InstallSection = () => {
                 installing.
               </p>
             </div>
-            <div className="panel rounded-2xl p-5">
+            <div className="panel lift rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-2 text-zinc-200">
                 <Terminal className="w-4 h-4 text-sage shrink-0" />
                 <span className="text-sm font-bold uppercase tracking-wider">

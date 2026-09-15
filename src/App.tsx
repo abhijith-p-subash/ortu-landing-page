@@ -8,6 +8,7 @@ import ComparisonSection from './components/sections/ComparisonSection';
 import DonationSection from './components/sections/DonationSection';
 import InstallSection from './components/sections/InstallSection';
 import FaqSection from './components/sections/FaqSection';
+import BirdCompanion from './components/ui/BirdCompanion';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <DonationSection />
       </main>
       <Footer />
+      <BirdCompanion />
     </div>
   );
 };

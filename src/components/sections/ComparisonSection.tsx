@@ -116,7 +116,7 @@ const ComparisonSection = () => {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-3xl border border-border bg-surface/70 shadow-2xl shadow-black/30">
+        <div className="glass overflow-hidden rounded-3xl">
           <div className="overflow-x-auto">
             <table className="min-w-full text-left border-collapse">
               <caption className="sr-only">
@@ -124,7 +124,7 @@ const ComparisonSection = () => {
                 clipboard app, and native macOS-only tools.
               </caption>
               <thead>
-                <tr className="border-b border-border bg-white/[0.03]">
+                <tr className="border-b border-border bg-gradient-to-b from-white/[0.05] to-transparent">
                   <th
                     scope="col"
                     className="px-5 py-4 text-[11px] font-bold uppercase tracking-[0.24em] text-zinc-500"
@@ -133,7 +133,7 @@ const ComparisonSection = () => {
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-4 text-[11px] font-bold uppercase tracking-[0.2em] text-accent"
+                    className="px-5 py-4 text-[11px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/[0.07]"
                   >
                     Ortu
                   </th>
@@ -155,11 +155,11 @@ const ComparisonSection = () => {
                 {rows.map((row, i) => (
                   <tr
                     key={row.label}
-                    className={
+                    className={`transition-colors hover:bg-white/[0.03] ${
                       i % 2 === 0
                         ? "border-b border-border/60"
                         : "border-b border-border/60 bg-white/[0.015]"
-                    }
+                    }`}
                   >
                     <th
                       scope="row"
@@ -167,7 +167,7 @@ const ComparisonSection = () => {
                     >
                       {row.label}
                     </th>
-                    <td className="px-5 py-4 align-middle bg-accent/[0.06]">
+                    <td className="px-5 py-4 align-middle bg-accent/[0.055] shadow-[inset_1px_0_0_0_rgba(255,138,61,0.14),inset_-1px_0_0_0_rgba(255,138,61,0.14)]">
                       {row.ortu}
                     </td>
                     <td className="px-5 py-4 align-middle">{row.electron}</td>

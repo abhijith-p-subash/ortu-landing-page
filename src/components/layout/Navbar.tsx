@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Download, Github, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRepoStats } from "../../hooks/useRepoStats";
@@ -21,12 +22,34 @@ const links = [
 const Navbar = () => {
   const { stars } = useRepoStats();
   const { downloadUrl, onDownloadClick } = useDownload();
+  // The bar floats over the hero's light, so it earns its contrast by
+  // condensing and deepening once you have scrolled past it rather than
+  // sitting at full weight over the headline.
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav aria-label="Primary" className="fixed top-5 w-full z-50 px-4">
-      <div className="max-w-5xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex justify-between items-center shadow-2xl shadow-black/40">
-        <a href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+    <nav
+      aria-label="Primary"
+      className={`fixed w-full z-50 px-4 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        scrolled ? "top-2.5" : "top-5"
+      }`}
+    >
+      <div
+        className={`max-w-5xl mx-auto glass rounded-2xl px-4 sm:px-5 flex justify-between items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          scrolled
+            ? "py-2 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.85)]"
+            : "py-3"
+        }`}
+      >
+        <a href="/" className="group flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110">
             <img
               className="w-full h-full object-contain"
               src="/app-icon.svg"
@@ -76,7 +99,7 @@ const Navbar = () => {
             href="https://github.com/abhijith-p-subash/ortu"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border text-zinc-400 hover:text-white hover:border-accent/40 transition-colors text-[11px] font-bold"
+            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border bg-white/[0.02] text-zinc-400 hover:text-white hover:border-accent/40 hover:bg-white/[0.05] transition-colors text-[11px] font-bold"
             aria-label="Star Ortu on GitHub"
           >
             {stars >= STAR_THRESHOLD ? (
@@ -99,7 +122,8 @@ const Navbar = () => {
             href={downloadUrl}
             rel="noopener noreferrer"
             onClick={onDownloadClick}
-            className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 bg-accent text-bg rounded-xl text-xs font-black uppercase tracking-widest hover:bg-accent-hover transition-all duration-300 shadow-lg shadow-accent/25"
+            data-bird-orbit="nav"
+            className="sheen inline-flex items-center gap-2 px-4 sm:px-5 py-2 bg-accent text-bg rounded-xl text-xs font-black uppercase tracking-widest hover:bg-accent-hover transition-all duration-300 shadow-[0_10px_26px_-8px_rgba(255,138,61,0.55)]"
           >
             <Download className="w-3.5 h-3.5" />
             Download
