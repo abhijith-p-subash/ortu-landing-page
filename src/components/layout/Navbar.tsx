@@ -49,9 +49,30 @@ const Navbar = () => {
         }`}
       >
         <a href="/" className="group flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110">
+          {/* The crow's nest. BirdCompanion flies the crow out of this badge on
+              load: it sets data-empty while its own bird sits exactly where the
+              logo's crow is drawn, so the swap is invisible, and clears it once
+              the bird has flown. The disc underneath is the icon minus its crow,
+              inlined so the empty badge costs no extra request. Without
+              JavaScript, or with reduced motion, nothing ever sets data-empty and
+              this is just the logo. */}
+          <div
+            data-bird-nest
+            className="group/nest relative w-8 h-8 rounded-lg flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+          >
+            <svg
+              viewBox="0 0 512 512"
+              aria-hidden="true"
+              focusable="false"
+              className="absolute inset-0 h-full w-full"
+            >
+              <circle fill="#D8DBBA" cx="256" cy="256" r="256" />
+              <path fill="#C6C9A3" d="M486.01,368.491l-61.193-61.193l-31.686-4.961L167.278,157.016l-102.76,50.93L350.542,493.97 C409.772,470.42,458.127,425.39,486.01,368.491z" />
+            </svg>
             <img
-              className="w-full h-full object-contain"
+              // hides instantly (the flying bird is already on top of it) and
+              // fades back in once the bird has left
+              className="relative w-full h-full object-contain transition-opacity duration-700 group-data-[empty=true]/nest:opacity-0 group-data-[empty=true]/nest:duration-0"
               src="/app-icon.svg"
               alt="Ortu logo"
               loading="eager"
